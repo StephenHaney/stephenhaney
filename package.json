@@ -1,0 +1,14 @@
+{
+  "name": "stephen",
+  "version": "0.0.1",
+  "author": "Stephen Haney",
+  "description": "",
+  "scripts": {
+    "start": "live-server ./src",
+    "build": ""
+  },
+  "homepage": "https://www.stephenhaney.com",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

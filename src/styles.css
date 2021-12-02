@@ -1,0 +1,355 @@
+/** --- Reset --- */
+
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/** --- End reset --- */
+
+/* --- Global tokens --- */
+
+:root {
+  --space0: 4px;
+  --space1: 8px;
+  --space2: 12px;
+  --space3: 16px;
+  --space4: 28px;
+  --space5: 36px;
+  --space6: 52px;
+  --space7: 100px;
+}
+
+.theme-blue {
+  --blue1: hsl(225 60% 99.4%);
+  --blue2: hsl(223 100% 98.6%);
+  --blue3: hsl(223 98.4% 97.1%);
+  --blue4: hsl(223 92.9% 95%);
+  --blue5: hsl(224 87.1% 92%);
+  --blue6: hsl(224 81.9% 87.8%);
+  --blue7: hsl(225 77.4% 82.1%);
+  --blue8: hsl(226 75.4% 74.5%);
+  --blue9: hsl(226 70% 55.5%);
+  --blue10: hsl(226 58.6% 51.3%);
+  --blue11: hsl(226 55% 45%);
+  --blue12: hsl(226 62% 17%);
+
+  --slate1: hsl(206 30% 98.8%);
+  --slate2: hsl(210 16.7% 97.6%);
+  --slate3: hsl(209 13.3% 95.3%);
+  --slate4: hsl(209 12.2% 93.2%);
+  --slate5: hsl(208 11.7% 91.1%);
+  --slate6: hsl(208 11.3% 88.9%);
+  --slate7: hsl(207 11.1% 85.9%);
+  --slate8: hsl(205 10.7% 78%);
+  --slate9: hsl(206 6% 56.1%);
+  --slate10: hsl(206 5.8% 52.3%);
+  --slate11: hsl(206 6% 43.5%);
+  --slate12: hsl(206 24% 9%);
+}
+
+.theme-blue.dark-mode {
+  --blue1: hsl(229 24% 10%);
+  --blue2: hsl(230 36.4% 12.9%);
+  --blue3: hsl(228 43.3% 17.5%);
+  --blue4: hsl(227 47.2% 21%);
+  --blue5: hsl(227 50% 24.1%);
+  --blue6: hsl(226 52.9% 28.2%);
+  --blue7: hsl(226 56% 34.5%);
+  --blue8: hsl(226 58.2% 44.1%);
+  --blue9: hsl(226 70% 55.5%);
+  --blue10: hsl(227 75.2% 61.6%);
+  --blue11: hsl(228 100% 75.9%);
+  --blue12: hsl(226 83% 96.3%);
+
+  --slate1: hsl(200 7% 8.8%);
+  --slate2: hsl(195 7.1% 11%);
+  --slate3: hsl(197 6.8% 13.6%);
+  --slate4: hsl(198 6.6% 15.8%);
+  --slate5: hsl(199 6.4% 17.9%);
+  --slate6: hsl(201 6.2% 20.5%);
+  --slate7: hsl(203 6% 24.3%);
+  --slate8: hsl(207 5.6% 31.6%);
+  --slate9: hsl(206 6% 43.9%);
+  --slate10: hsl(206 5.2% 49.5%);
+  --slate11: hsl(206 6% 63%);
+  --slate12: hsl(210 6% 93%);
+}
+
+/* --- End global tokens --- */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 19px;
+  line-height: 30px;
+  color: var(--slate12);
+  background-color: var(--slate1);
+}
+
+/** --- Header --- */
+
+.site-header {
+  display: flex;
+  max-width: 800px;
+  align-items: flex-end;
+  margin: auto;
+  padding-top: var(--space6);
+  padding-bottom: var(--space4);
+  justify-content: space-between;
+}
+
+.site-nav {
+  display: flex;
+}
+
+.site-header .logo {
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  background-color: var(--blue12);
+  color: var(--slate1);
+  padding-left: var(--space3);
+  padding-right: var(--space3);
+  margin-left: calc(-1 * var(--space4));
+  margin-right: var(--space3);
+  border-radius: 3px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 1.3em;
+  text-decoration: none;
+  transform: rotate(-3deg);
+}
+
+.site-header .logo:hover {
+  background-color: var(--blue11);
+}
+
+.site-header nav a {
+  color: var(--slate12);
+  padding-left: var(--space3);
+  padding-right: var(--space3);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+}
+
+.site-header nav a:hover {
+  background-color: var(--blue11);
+  border-radius: 3px;
+  color: var(--slate1);
+}
+
+.dark-mode-switcher {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: var(--space2);
+  border-radius: 3px;
+  width: 42px;
+  height: 42px;
+  color: var(--slate12);
+  margin-left: var(--space3);
+}
+
+.dark-mode-switcher:hover {
+  background-color: var(--blue11);
+  color: var(--slate1);
+}
+
+.dark-mode-switcher svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dark-mode .dark-mode-switcher.moon {
+  display: none;
+}
+.dark-mode-switcher.sun {
+  display: none;
+}
+.dark-mode .dark-mode-switcher.sun {
+  display: block;
+}
+
+/** --- Article --- */
+
+article {
+  max-width: 800px;
+  margin: auto;
+  padding-bottom: var(--space7);
+}
+
+.article-header {
+  margin-top: var(--space6);
+  margin-bottom: var(--space6);
+}
+
+/** --- Headlines --- */
+
+h1 {
+  max-width: 600px;
+  margin-bottom: var(--space0);
+  font-size: 2.25em;
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--blue12);
+}
+
+.by-line {
+  font-size: 0.9em;
+  color: var(--slate11);
+}
+
+article h2 {
+  font-size: 1.7em;
+  font-weight: 600;
+  color: var(--blue11);
+  margin-bottom: var(--space3);
+  letter-spacing: -0.3px;
+}
+
+article h3 {
+  font-size: 1.15em;
+  font-weight: 400;
+  color: var(--blue12);
+  margin-top: var(--space1);
+  margin-bottom: var(--space1);
+  letter-spacing: -0.1px;
+}
+
+article h3 + p,
+article h2 + p {
+  margin-top: 0px;
+}
+
+/** --- Link --- */
+
+article a {
+  color: var(--blue12);
+  text-decoration: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--blue9);
+  border-top: 2px solid transparent;
+}
+
+article a:hover {
+  color: var(--slate1);
+  background-color: var(--blue10);
+  border-bottom-color: var(--blue10);
+  border-top-color: var(--blue10);
+  border-radius: 3px;
+}
+
+/** --- Paragraph --- */
+
+article p {
+  margin-top: var(--space5);
+  margin-bottom: var(--space5);
+}
+
+/** --- Image --- */
+
+article img {
+  border-radius: 3px;
+  max-width: 125%;
+  margin-left: -12.5%;
+  margin-top: var(--space5);
+  margin-bottom: var(--space5);
+  box-shadow: 3px 15px 15px 0px rgba(0, 0, 0, 0.1),
+    3px 15px 10px 0px rgba(0, 0, 0, 0.1), 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/** --- Pre --- */
+article pre {
+  background-color: var(--slate2);
+  border-radius: 3px;
+  margin-left: calc(-1 * var(--space6));
+  margin-right: calc(-1 * var(--space6));
+  padding-left: var(--space6);
+  margin-top: var(--space6);
+  margin-bottom: var(--space6);
+  font-size: 0.925em;
+}
+
+/** --- Footer --- */
+
+footer {
+  background: var(--slate12);
+  min-height: 300px;
+}
