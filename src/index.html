@@ -2,12 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Test page</title>
+    <meta name="color-scheme" content="dark light" />
+    <title>Stephen Haney</title>
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/prism/prism-vscode-dark.css" />
   </head>
   <body class="theme-blue">
     <header class="site-header">
-      <a href="/" class="logo">Stephen Haney</a>
+      <a href="/" class="logo">
+        <img
+          class="logo-avatar"
+          src="/assets/stephen-haney-headshot.jpg"
+          width="60"
+          height="60"
+        />
+        Stephen Haney
+      </a>
 
       <nav class="site-nav" role="navigation" aria-label="Main">
         <a href="https://twitter.com/sdothaney" target="_blank">twitter</a>
@@ -20,9 +30,10 @@
 
         <button
           class="dark-mode-switcher moon"
-          onclick="document.body.classList.toggle('dark-mode')"
+          onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');"
         >
           <svg
+            class="moon-icon"
             width="15"
             height="15"
             viewBox="0 0 15 15"
@@ -36,12 +47,9 @@
               clip-rule="evenodd"
             ></path>
           </svg>
-        </button>
-        <button
-          class="dark-mode-switcher sun"
-          onclick="document.body.classList.toggle('dark-mode')"
-        >
+
           <svg
+            class="sun-icon"
             width="15"
             height="15"
             viewBox="0 0 15 15"
@@ -66,85 +74,157 @@
           <div class="by-line">By Stephen Haney on December 1, 2021</div>
         </header>
 
-        <h2>Let's get down to business</h2>
+        <p>
+          What do you do if you need plaintext from a
+          <code>contenteditable</code> HTML element with correct linebreaks?
+        </p>
 
-        <h3>Sometimes you gotta subhead under a head</h3>
+        <p>It should be simple – just use <code>element.innerText</code>.</p>
 
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer
-          <strong>took a galley of type</strong> and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the
-          leap into <em>electronic typesetting</em>, remaining essentially
-          unchanged.
+          But it turns out that there are bugs with
+          <code>contenteditable</code> and <code>innerText</code> linebreaks.
+          For me, Chrome reports too many linebreaks. And I’m finding reports of
+          FireFox doing the same.
         </p>
 
         <pre><code class="language-javascript">
-// Does some stuff
-function generateClass${i}() {
-  return {
-    '--some-var': '${i}',
-    backgroundColor: 'rgb(255, 255, ${i % 255})',
-    fontSize: '${i / 1000}px',
-    padding: '${i * 10}px',
-    paddingLeft: '${i}px',
-    marginRight: '-${i}em',
-    boxShadow: '${i}px ${i * 2}px 0px #000',
-  };
-}
+// What my content editable looks like, a single line between
+a
+// 1
+b
+
+// What Chrome innerText reports, two lines between
+a
+// 1
+// 2
+b
         </code></pre>
 
         <p>
-          There are many variations
-          <a href="#">of passages of Lorem Ipsum available,</a> but the majority
-          have suffered alteration in some form, by injected humour, or
-          randomised words which don't look even slightly believable. If you are
-          going to use a passage of Lorem Ipsum, you need to be sure there isn't
-          anything embarrassing hidden in the middle of text.
+          I created a
+          <a href="https://codepen.io/stephenhaney/pen/VwjxeXR"
+            >reproduction case codepen</a
+          >, type type “a -> return -> return -> b” in the left and you’ll see
+          the wrong result pop up on the right hand side (unless it’s been fixed
+          by now!)
         </p>
 
-        <img
-          src="https://images.unsplash.com/photo-1587375173166-65b2fa3cf1a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80"
-        />
+        <h2>Why is innerText wrong?</h2>
 
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer
-          <strong>took a galley of type</strong> and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the
-          leap into <em>electronic typesetting</em>, remaining essentially
-          unchanged.
-        </p>
-
-        <h2>This is a testing headline</h2>
-
-        <p>
-          Text decorations are drawn across descendant text elements. This means
-          that if an element specifies a text decoration, then a child element
-          can't remove the decoration.
-        </p>
-
-        <h3>Sub-section heading</h3>
-
-        <p>
-          There are many variations
-          <a href="#">of passages of Lorem Ipsum available,</a> but the majority
-          have suffered alteration in some form, by injected humour, or
-          randomised words which don't look even slightly believable. If you are
-          going to use a passage of Lorem Ipsum, you need to be sure there isn't
-          anything embarrassing hidden in the middle of text.
+          Browsers make up their own HTML for
+          <code>contenteditable</code> linebreaks. Some use <code>div</code>,
+          some use <code>p</code> tags, others prefer <code>br</code>. Chrome
+          mixes and matches <code>divs</code> and <code>br</code> elements.
         </p>
 
         <p>
-          Text decorations are drawn across descendant text elements. This means
-          that if an element specifies a text decoration, then a child element
-          can't remove the decoration.
+          No wonder <code>innerText</code> returns the wrong result — it’s hard
+          to parse unpredictable HTML!
+        </p>
+
+        <p>
+          Browsers have tried to align on a standard for
+          <code>contenteditable</code> HTML . . . my guess is that those efforts
+          broke the <code>innerText</code> parsing without anyone noticing.
+        </p>
+
+        <p>
+          There’s a
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content#Differences_in_markup_generation"
+            >great history on MDN</a
+          >
+          if you’d like more info.
+        </p>
+
+        <h2>Fixing innerText linebreaks with parsing</h2>
+
+        <p>
+          What do we do if we need a plaintext value but also need perfect
+          linebreaks?
+        </p>
+
+        <p>
+          Here is a snippet I’m using – it’s working but I haven’t tested use
+          cases beyond my own. So . . . apply it with your own critical
+          thinking.
+        </p>
+
+        <pre><code class="language-javascript">
+let newValue = '';
+let isOnFreshLine = true;
+
+// Recursive function to navigate childNodes and build linebreaks with text
+function parseChildNodesForValueAndLines(childNodes: NodeListOf&lt;ChildNode&gt;) {
+  for (let i = 0; i < childNodes.length; i++) {
+    const childNode = childNodes[i];
+
+    if (childNode.nodeName === 'BR') {
+      // BRs are always line breaks which means the next loop is on a fresh line
+      newValue += '\n';
+      isOnFreshLine = true;
+      continue;
+    }
+
+    // We may or may not need to create a new line
+    if (childNode.nodeName === 'DIV' && isOnFreshLine === false) {
+      // Divs create new lines for themselves if they aren't already on one
+      newValue += '\n';
+    }
+
+    // Whether we created a new line or not, we'll use it for this content so the next loop will not be on a fresh line:
+    isOnFreshLine = false;
+
+    // Add the text content if this is a text node:
+    if (childNode.nodeType === 3 && childNode.textContent) {
+      newValue += childNode.textContent;
+    }
+
+    // If this node has children, get into them as well:
+    parseChildNodesForValueAndLines(childNode.childNodes);
+  }
+}
+
+// Parse the child nodes for HTML and newlines:
+parseChildNodesForValueAndLines(e.currentTarget.childNodes);
+
+// Do whatever you want with newValue now
+        </code></pre>
+
+        <p>
+          You’ll also need <code>white-space: pre-wrap</code> set on your
+          elements to preserve your linebreaks.
+        </p>
+
+        <p>
+          During testing, I’ve another found issue in Safari where a single
+          unbreakable word that’s too wide for its element will render with an
+          extra incorrect linebreak – but not when
+          <code>contenteditable</code> is set! That’s an issue for another day.
+        </p>
+
+        <p>
+          I hope this experience helps someone else who stumbles upon this
+          problem.
         </p>
       </article>
 
       <footer></footer>
     </main>
+
+    <script>
+      const prefersDarkScheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      );
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme === 'dark' || prefersDarkScheme.matches === true) {
+        document.body.classList.add('dark-mode');
+      }
+    </script>
+
+    <script src="prism/prism.js" defer />
   </body>
 </html>
