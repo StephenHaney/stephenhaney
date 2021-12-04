@@ -123,19 +123,6 @@ th {
   --blue11: hsl(192 85% 31%);
   --blue12: hsl(192 88% 12.5%);
 
-  /* --blue1: hsl(255 65% 99.4%);
-  --blue2: hsl(252 100% 99%);
-  --blue3: hsl(252 96.9% 97.4%);
-  --blue4: hsl(252 91.5% 95.5%);
-  --blue5: hsl(252 85.1% 93%);
-  --blue6: hsl(252 77.8% 89.4%);
-  --blue7: hsl(252 71% 83.7%);
-  --blue8: hsl(252 68.6% 76.3%);
-  --blue9: hsl(252 56% 57.5%);
-  --blue10: hsl(251 48.1% 53.5%);
-  --blue11: hsl(250 43% 48%);
-  --blue12: hsl(254 60% 18.5%); */
-
   --slate1: hsl(206 30% 98.8%);
   --slate2: hsl(210 16.7% 97.6%);
   --slate3: hsl(209 13.3% 95.3%);
@@ -148,22 +135,11 @@ th {
   --slate10: hsl(206 5.8% 52.3%);
   --slate11: hsl(206 6% 43.5%);
   --slate12: hsl(206 24% 9%);
+
+  --body-background: #fff;
 }
 
 .theme-blue.dark-mode {
-  /* --blue1: hsl(229 24% 10%);
-  --blue2: hsl(230 36.4% 12.9%);
-  --blue3: hsl(228 43.3% 17.5%);
-  --blue4: hsl(227 47.2% 21%);
-  --blue5: hsl(227 50% 24.1%);
-  --blue6: hsl(226 52.9% 28.2%);
-  --blue7: hsl(226 56% 34.5%);
-  --blue8: hsl(226 58.2% 44.1%);
-  --blue9: hsl(226 70% 55.5%);
-  --blue10: hsl(227 75.2% 61.6%);
-  --blue11: hsl(228 100% 75.9%);
-  --blue12: hsl(226 83% 96.3%); */
-
   --blue1: hsl(192 60% 7.2%);
   --blue2: hsl(192 71.4% 8.2%);
   --blue3: hsl(192 75.9% 10.8%);
@@ -189,6 +165,8 @@ th {
   --slate10: hsl(206 5.2% 49.5%);
   --slate11: hsl(206 6% 63%);
   --slate12: hsl(210 6% 93%);
+
+  --body-background: var(--slate1);
 }
 
 /* --- End global tokens --- */
@@ -197,10 +175,11 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  font-size: 19px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 28px;
   color: var(--slate12);
-  background-color: var(--slate1);
+  background-color: var(--body-background);
+  overscroll-behavior: none;
 }
 
 ::selection {
@@ -211,11 +190,10 @@ body {
 
 .site-header {
   display: flex;
-  max-width: 960px;
+  max-width: 930px;
   justify-content: space-between;
   margin: auto;
-  margin-top: var(--space6);
-  margin-bottom: var(--space8);
+  margin-top: var(--space3);
   /* justify-content: center; */
   border-radius: 3px;
 }
@@ -241,7 +219,7 @@ body {
   border-radius: 3px;
 }
 
-.site-header a::before {
+.site-header nav a::before {
   content: ' ';
   background-color: var(--blue6);
   position: absolute;
@@ -251,25 +229,24 @@ body {
   left: -100px;
 
   z-index: -1;
-  filter: blur(200px);
-  opacity: 0.2;
+  filter: blur(150px);
 }
 
 .site-header a.logo {
   font-weight: 600;
-  font-size: 1em;
-
-  padding-top: var(--space3);
-  padding-bottom: var(--space3);
+  font-size: 0.9em;
+  color: var(--slate12);
+  padding-top: var(--space2);
+  padding-bottom: var(--space2);
 }
 
 .logo-avatar {
   object-fit: cover;
   border-radius: 99999px;
   margin-right: var(--space3);
-  width: 55px;
-  height: 55px;
-  box-shadow: 0px 0px 0px 1px var(--slate1);
+  width: 45px;
+  height: 45px;
+  box-shadow: 0px 0px 0px 1px var(--blue6);
 }
 
 .dark-mode-switcher {
@@ -326,15 +303,14 @@ article {
 
 h1 {
   max-width: 660px;
-  /* margin-bottom: var(--space1); */
-  font-size: 2.25em;
+  font-size: 2.1em;
+  letter-spacing: -0.5px;
   line-height: 1.05;
   font-weight: 700;
   color: var(--blue12);
 
   padding: var(--space3) var(--space3);
-  background-color: var(--blue1);
-  /* background: linear-gradient(180deg, var(--blue2), var(--blue3)); */
+  background: linear-gradient(20deg, var(--blue1), var(--blue2));
   border-radius: 6px 6px 6px 0;
 
   position: relative;
@@ -342,23 +318,37 @@ h1 {
 
 h1::after {
   content: ' ';
-  background-color: var(--blue7);
+  background-color: var(--blue9);
   position: absolute;
-  top: -40px;
-  right: -130px;
-  bottom: -40px;
-  left: -130px;
+  top: -150px;
+  right: 200px;
+  bottom: 70px;
+  left: -400px;
   opacity: 0.7;
   z-index: -1;
-  filter: blur(200px);
+  filter: blur(175px);
+}
+
+h1::before {
+  content: ' ';
+  /* background-color: var(--blue7); */
+  background-color: rgb(141, 164, 239);
+  position: absolute;
+  top: -40px;
+  right: -400px;
+  bottom: 0px;
+  left: 300px;
+  opacity: 0.5;
+  z-index: -1;
+  filter: blur(175px);
 }
 
 .by-line {
   font-size: 0.8em;
-  color: var(--blue11);
-  opacity: 0.75;
-
+  color: var(--slate12);
+  opacity: 0.5;
   background-color: var(--blue1);
+  background: linear-gradient(20deg, var(--blue1), var(--blue2));
   border-radius: 0 0 6px 6px;
   padding: var(--space1) var(--space3);
 }
@@ -366,9 +356,9 @@ h1::after {
 article h2 {
   font-size: 1.7em;
   font-weight: 600;
-  color: var(--blue11);
-  margin-top: var(--space7);
-  margin-bottom: var(--space5);
+  color: var(--slate12);
+  margin-top: var(--space6);
+  margin-bottom: var(--space4);
   letter-spacing: -0.3px;
 }
 
@@ -393,16 +383,16 @@ article a {
   text-decoration: none;
   padding-top: 2px;
   padding-bottom: 2px;
-  border-bottom: 2px solid var(--blue9);
-  border-top: 2px solid transparent;
+  box-shadow: 0px 1px 0px 0px var(--blue8);
+  /* border-bottom: 1px solid var(--blue8); */
+  /* border-top: 1px solid transparent; */
 }
 
 article a:hover {
   color: var(--slate1);
-  background-color: var(--blue10);
-  border-bottom-color: var(--blue10);
-  border-top-color: var(--blue10);
-  border-radius: 3px;
+  background: linear-gradient(170deg, var(--blue7), var(--blue9));
+  /* border-bottom-color: transparent; */
+  /* border-top-color: var(--blue8); */
 }
 
 /** --- Paragraph --- */
@@ -410,6 +400,7 @@ article a:hover {
 article p {
   margin-top: var(--space5);
   margin-bottom: var(--space5);
+  letter-spacing: 0.25px;
 }
 
 /** --- Image --- */
@@ -457,6 +448,5 @@ article pre code {
 /** --- Footer --- */
 
 footer {
-  background: var(--slate12);
   min-height: 300px;
 }
