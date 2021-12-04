@@ -239,6 +239,7 @@ body {
   color: var(--slate12);
   padding-top: var(--space2);
   padding-bottom: var(--space2);
+  border-radius: 5px;
 }
 
 .logo-avatar {
@@ -321,9 +322,9 @@ h1::after {
   content: ' ';
   background-color: var(--blue9);
   position: absolute;
-  top: -150px;
+  top: -200px;
   right: 200px;
-  bottom: 70px;
+  bottom: 100px;
   left: -400px;
   opacity: 0.7;
   z-index: -1;
@@ -335,13 +336,13 @@ h1::before {
   /* background-color: var(--blue7); */
   background-color: rgb(141, 164, 239);
   position: absolute;
-  top: -40px;
+  top: -100px;
   right: -400px;
-  bottom: 0px;
+  bottom: 40px;
   left: 300px;
   opacity: 0.5;
   z-index: -1;
-  filter: blur(175px);
+  filter: blur(160px);
 }
 
 .by-line {
@@ -439,10 +440,13 @@ article p code {
   font-family: -ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
     'Liberation Mono', monospace;
   font-size: 0.9em;
-  padding: 1px 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 3px;
+  padding-bottom: 2px;
   border: 1px solid var(--slate7);
   border-radius: 3px;
-  opacity: 0.9;
+  background-color: var(--slate1);
 }
 
 /** --- Footer --- */
