@@ -381,7 +381,7 @@ article h3 + p {
 /** --- Link --- */
 
 article a {
-  color: var(--blue12);
+  color: var(--slate12);
   text-decoration: none;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -392,7 +392,7 @@ article a {
 
 article a:hover {
   color: var(--slate1);
-  background: linear-gradient(170deg, var(--blue7), var(--blue9));
+  background: linear-gradient(70deg, var(--blue11), var(--blue9));
   /* border-bottom-color: transparent; */
   /* border-top-color: var(--blue8); */
 }
@@ -447,6 +447,7 @@ article p code {
   border: 1px solid var(--slate7);
   border-radius: 3px;
   background-color: var(--slate1);
+  color: var(--blue11);
 }
 
 /** --- Footer --- */
