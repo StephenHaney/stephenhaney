@@ -294,7 +294,7 @@ article {
 
 .article-header {
   margin-top: var(--space6);
-  margin-bottom: var(--space6);
+  margin-bottom: var(--space5);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -311,8 +311,8 @@ h1 {
   font-weight: 700;
   color: var(--blue12);
 
-  padding: var(--space3) var(--space3);
-  background: linear-gradient(20deg, var(--blue1), var(--blue2));
+  padding: var(--space3) var(--space3) var(--space1) var(--space3);
+  /* background: linear-gradient(20deg, var(--blue1), var(--blue2)); */
   border-radius: 6px 6px 6px 0;
 
   position: relative;
@@ -349,10 +349,10 @@ h1::before {
   font-size: 0.8em;
   color: var(--slate12);
   opacity: 0.5;
-  background-color: var(--blue1);
-  background: linear-gradient(20deg, var(--blue1), var(--blue2));
+  /* background-color: var(--blue1); */
+  /* background: linear-gradient(20deg, var(--blue1), var(--blue2)); */
   border-radius: 0 0 6px 6px;
-  padding: var(--space1) var(--space3);
+  padding: 0 var(--space3);
 }
 
 article h2 {
@@ -374,7 +374,8 @@ article h3 {
 }
 
 article h2 + p,
-article h3 + p {
+article h3 + p,
+article p:first-of-type {
   margin-top: 0;
 }
 
