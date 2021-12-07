@@ -180,6 +180,9 @@ body {
   color: var(--slate12);
   background-color: var(--body-background);
   overscroll-behavior: none;
+
+  margin-left: var(--space2);
+  margin-right: var(--space2);
 }
 
 ::selection {
@@ -194,8 +197,17 @@ body {
   justify-content: space-between;
   margin: auto;
   margin-top: var(--space3);
-  /* justify-content: center; */
   border-radius: 3px;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .site-header {
+    flex-direction: row;
+    align-items: normal;
+  }
 }
 
 .site-nav {
@@ -213,11 +225,13 @@ body {
   font-size: 0.8em;
 }
 
-.site-header a:hover {
-  /* text-decoration: underline; */
-  background-color: var(--blue1);
-  background: linear-gradient(20deg, var(--blue1), var(--blue2));
-  border-radius: 3px;
+@media (hover: hover) {
+  .site-header a:hover {
+    /* text-decoration: underline; */
+    background-color: var(--blue1);
+    background: linear-gradient(20deg, var(--blue1), var(--blue2));
+    border-radius: 3px;
+  }
 }
 
 .site-header nav::before {
@@ -264,9 +278,11 @@ body {
   margin-left: var(--space3);
 }
 
-.dark-mode-switcher:hover {
-  background-color: var(--blue12);
-  color: var(--blue1);
+@media (hover: hover) {
+  .dark-mode-switcher:hover {
+    background-color: var(--blue12);
+    color: var(--blue1);
+  }
 }
 
 .dark-mode-switcher svg {
@@ -293,19 +309,25 @@ article {
 }
 
 .article-header {
-  margin-top: var(--space6);
-  margin-bottom: var(--space5);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: calc(-1 * var(--space3));
+  margin-top: var(--space3);
+  margin-bottom: var(--space5);
+}
+@media only screen and (min-width: 600px) {
+  .article-header {
+    margin-top: var(--space6);
+    margin-bottom: var(--space5);
+  }
 }
 
 /** --- Headlines --- */
 
 h1 {
   max-width: 660px;
-  font-size: 2.1em;
+  font-size: 1.9em;
   letter-spacing: -0.5px;
   line-height: 1.05;
   font-weight: 700;
@@ -316,6 +338,11 @@ h1 {
   border-radius: 6px 6px 6px 0;
 
   position: relative;
+}
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 2.1em;
+  }
 }
 
 h1::after {
@@ -347,8 +374,8 @@ h1::before {
 
 .by-line {
   font-size: 0.8em;
-  color: var(--slate12);
-  opacity: 0.5;
+  color: var(--slate11);
+  /* opacity: 0.6; */
   /* background-color: var(--blue1); */
   /* background: linear-gradient(20deg, var(--blue1), var(--blue2)); */
   border-radius: 0 0 6px 6px;
@@ -391,11 +418,11 @@ article a {
   /* border-top: 1px solid transparent; */
 }
 
-article a:hover {
-  color: var(--slate1);
-  background: linear-gradient(70deg, var(--blue11), var(--blue9));
-  /* border-bottom-color: transparent; */
-  /* border-top-color: var(--blue8); */
+@media (hover: hover) {
+  article a:hover {
+    color: var(--slate1);
+    background: linear-gradient(70deg, var(--blue11), var(--blue9));
+  }
 }
 
 /** --- Paragraph --- */
