@@ -282,13 +282,13 @@ body {
   height: 100%;
 }
 
-.dark-mode .moon-icon {
-  display: none;
-}
-.sun-icon {
-  display: none;
-}
 .dark-mode .sun-icon {
+  display: none;
+}
+.moon-icon {
+  display: none;
+}
+.dark-mode .moon-icon {
   display: block;
 }
 
@@ -440,7 +440,7 @@ article p code {
   border: 1px solid var(--slate7);
   border-radius: 4px;
   background-color: var(--slate1);
-  color: var(--cyan9);
+  color: var(--cyan11);
 }
 
 /** --- Footer --- */
