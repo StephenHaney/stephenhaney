@@ -169,7 +169,7 @@
   --gold12: hsl(36 16% 20%);
 }
 
-.theme-blue-dark-mode {
+.theme-blue.dark-mode {
   --gold1: hsl(44 9% 8.3%);
   --gold2: hsl(43 14.3% 9.6%);
   --gold3: hsl(42 15.5% 13%);

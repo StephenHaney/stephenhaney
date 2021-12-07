@@ -97,32 +97,6 @@ th {
 }
 
 .theme-blue {
-  /* --blue1: hsl(225 60% 99.4%);
-  --blue2: hsl(223 100% 98.6%);
-  --blue3: hsl(223 98.4% 97.1%);
-  --blue4: hsl(223 92.9% 95%);
-  --blue5: hsl(224 87.1% 92%);
-  --blue6: hsl(224 81.9% 87.8%);
-  --blue7: hsl(225 77.4% 82.1%);
-  --blue8: hsl(226 75.4% 74.5%);
-  --blue9: hsl(226 70% 55.5%);
-  --blue10: hsl(226 58.6% 51.3%);
-  --blue11: hsl(226 55% 45%);
-  --blue12: hsl(226 62% 17%); */
-
-  --blue1: hsl(185 60% 98.7%);
-  --blue2: hsl(185 73.3% 97.1%);
-  --blue3: hsl(186 70.2% 94.4%);
-  --blue4: hsl(186 63.8% 90.6%);
-  --blue5: hsl(187 58.3% 85.4%);
-  --blue6: hsl(188 54.6% 78.4%);
-  --blue7: hsl(189 53.7% 68.7%);
-  --blue8: hsl(189 60.3% 52.5%);
-  --blue9: hsl(190 95% 39%);
-  --blue10: hsl(191 91.2% 36.8%);
-  --blue11: hsl(192 85% 31%);
-  --blue12: hsl(192 88% 12.5%);
-
   --slate1: hsl(206 30% 98.8%);
   --slate2: hsl(210 16.7% 97.6%);
   --slate3: hsl(209 13.3% 95.3%);
@@ -140,19 +114,6 @@ th {
 }
 
 .theme-blue.dark-mode {
-  --blue1: hsl(192 60% 7.2%);
-  --blue2: hsl(192 71.4% 8.2%);
-  --blue3: hsl(192 75.9% 10.8%);
-  --blue4: hsl(192 79.3% 12.8%);
-  --blue5: hsl(192 82.5% 14.6%);
-  --blue6: hsl(192 86.6% 16.9%);
-  --blue7: hsl(192 92.6% 20.1%);
-  --blue8: hsl(192 100% 24.5%);
-  --blue9: hsl(190 95% 39%);
-  --blue10: hsl(188 100% 40%);
-  --blue11: hsl(186 100% 42.2%);
-  --blue12: hsl(185 73% 93.2%);
-
   --slate1: hsl(200 7% 8.8%);
   --slate2: hsl(195 7.1% 11%);
   --slate3: hsl(197 6.8% 13.6%);
@@ -171,10 +132,6 @@ th {
 
 /* --- End global tokens --- */
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
@@ -182,16 +139,44 @@ body {
   font-size: 18px;
   line-height: 28px;
   color: var(--slate12);
-  background-color: var(--body-background);
   overscroll-behavior: none;
 
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding-left: var(--space2);
   padding-right: var(--space2);
+
+  max-width: 100%;
+
+  background-color: var(--body-background);
 }
 
 ::selection {
-  background: var(--blue7);
+  background: var(--cyan7);
+}
+
+/** --- Blobs --- */
+.background-blobs {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: -1;
+
+  opacity: 0.7;
+  filter: blur(130px);
+
+  background: radial-gradient(
+      ellipse 70% 450px at 26% -50px,
+      var(--cyan9),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 200px at 63% 200px,
+      rgb(141, 164, 239, 0),
+      transparent
+    ),
+    radial-gradient(ellipse 30% 120px at 65% 0px, var(--cyan8), transparent);
 }
 
 /** --- Header --- */
@@ -222,7 +207,7 @@ body {
 }
 
 .site-header a {
-  color: var(--blue12);
+  color: var(--cyan12);
   padding: var(--space0) var(--space3);
   text-decoration: none;
   display: flex;
@@ -232,16 +217,18 @@ body {
 
 @media (hover: hover) {
   .site-header a:hover {
-    /* text-decoration: underline; */
-    background-color: var(--blue1);
-    background: linear-gradient(20deg, var(--blue1), var(--blue2));
     border-radius: 4px;
+    background-color: hsl(185, 73.3%, 97.1%, 0.8);
+  }
+
+  .dark-mode .site-header a:hover {
+    background-color: hsla(192, 71.4%, 8.2%, 0.9);
   }
 }
-
+/*
 .site-header nav::before {
   content: ' ';
-  background-color: var(--blue6);
+  background-color: var(--cyan6);
   position: absolute;
   top: -20px;
   right: -100px;
@@ -250,7 +237,7 @@ body {
 
   z-index: -1;
   filter: blur(150px);
-}
+} */
 
 .site-header a.logo {
   font-weight: 600;
@@ -267,7 +254,7 @@ body {
   margin-right: var(--space3);
   width: 45px;
   height: 45px;
-  box-shadow: 0px 0px 0px 1px var(--blue6);
+  box-shadow: 0px 0px 0px 1px var(--cyan6);
 }
 
 .dark-mode-switcher {
@@ -279,20 +266,14 @@ body {
   border-radius: 4px;
   width: 42px;
   height: 42px;
-  color: var(--blue12);
+  color: var(--cyan12);
   margin-left: var(--space3);
-}
-
-@media only screen and (min-width: 600px) {
-  .dark-mode-switcher {
-    margin-right: calc(-1 * var(--space2));
-  }
 }
 
 @media (hover: hover) {
   .dark-mode-switcher:hover {
-    background-color: var(--blue12);
-    color: var(--blue1);
+    background-color: var(--cyan12);
+    color: var(--cyan1);
   }
 }
 
@@ -342,10 +323,10 @@ h1 {
   letter-spacing: -0.5px;
   line-height: 1.05;
   font-weight: 700;
-  color: var(--blue12);
+  color: var(--cyan12);
 
   padding: var(--space3) var(--space3) var(--space1) var(--space3);
-  /* background: linear-gradient(20deg, var(--blue1), var(--blue2)); */
+  /* background: linear-gradient(20deg, var(--cyan1), var(--cyan2)); */
   border-radius: 6px 6px 6px 0;
 
   position: relative;
@@ -356,40 +337,9 @@ h1 {
   }
 }
 
-h1::after {
-  content: ' ';
-  background-color: var(--blue9);
-  position: absolute;
-  top: -200px;
-  right: 200px;
-  bottom: 100px;
-  left: -400px;
-  opacity: 0.7;
-  z-index: -1;
-  filter: blur(175px);
-}
-
-h1::before {
-  content: ' ';
-  /* background-color: var(--blue7); */
-  background-color: rgb(141, 164, 239);
-  position: absolute;
-  top: -100px;
-  right: -400px;
-  bottom: 40px;
-  left: 300px;
-  opacity: 0.5;
-  z-index: -1;
-  filter: blur(160px);
-  -moz-filter: blur(1000px);
-}
-
 .by-line {
   font-size: 0.8em;
   color: var(--slate11);
-  /* opacity: 0.6; */
-  /* background-color: var(--blue1); */
-  /* background: linear-gradient(20deg, var(--blue1), var(--blue2)); */
   border-radius: 0 0 6px 6px;
   padding: 0 var(--space3);
 }
@@ -437,15 +387,15 @@ article a {
   text-decoration: none;
   padding-top: 2px;
   padding-bottom: 2px;
-  box-shadow: 0px 1px 0px 0px var(--blue8);
-  /* border-bottom: 1px solid var(--blue8); */
+  box-shadow: 0px 1px 0px 0px var(--cyan8);
+  /* border-bottom: 1px solid var(--cyan8); */
   /* border-top: 1px solid transparent; */
 }
 
 @media (hover: hover) {
   article a:hover {
     color: var(--slate1);
-    background: linear-gradient(70deg, var(--blue11), var(--blue9));
+    background: linear-gradient(70deg, var(--cyan11), var(--cyan9));
   }
 }
 
@@ -491,7 +441,7 @@ article p code {
   border: 1px solid var(--slate7);
   border-radius: 4px;
   background-color: var(--slate1);
-  color: var(--blue10);
+  color: var(--cyan9);
 }
 
 /** --- Footer --- */
