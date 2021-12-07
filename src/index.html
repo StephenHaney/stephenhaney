@@ -194,6 +194,17 @@ parseChildNodesForValueAndLines(e.currentTarget.childNodes);
 // Do whatever you want with newValue now
         </code></pre>
 
+        <pre><code class="language-css">
+.this-is-a-test {
+  background-color: #123456;
+  --some-var: 'red';
+}
+
+@media () {
+
+}
+        </code></pre>
+
         <p>
           You’ll also need <code>white-space: pre-wrap</code> set on your
           elements to preserve your linebreaks.
@@ -221,7 +232,8 @@ parseChildNodesForValueAndLines(e.currentTarget.childNodes);
       );
       const currentTheme = localStorage.getItem('theme');
 
-      const prefersDark = currentTheme !== 'light' && prefersDarkScheme.matches === true;
+      const prefersDark =
+        currentTheme !== 'light' && prefersDarkScheme.matches === true;
       const hasSetDark = currentTheme === 'dark';
       if (hasSetDark || prefersDark) {
         document.body.classList.add('dark-mode');

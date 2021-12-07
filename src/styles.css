@@ -197,7 +197,7 @@ body {
   justify-content: space-between;
   margin: auto;
   margin-top: var(--space3);
-  border-radius: 3px;
+  border-radius: 4px;
 
   flex-direction: column;
   align-items: center;
@@ -230,7 +230,7 @@ body {
     /* text-decoration: underline; */
     background-color: var(--blue1);
     background: linear-gradient(20deg, var(--blue1), var(--blue2));
-    border-radius: 3px;
+    border-radius: 4px;
   }
 }
 
@@ -271,7 +271,7 @@ body {
   outline: none;
   padding: var(--space2);
   margin-right: calc(-1 * var(--space2));
-  border-radius: 3px;
+  border-radius: 4px;
   width: 42px;
   height: 42px;
   color: var(--blue12);
@@ -370,6 +370,7 @@ h1::before {
   opacity: 0.5;
   z-index: -1;
   filter: blur(160px);
+  -moz-filter: blur(1000px);
 }
 
 .by-line {
@@ -437,7 +438,7 @@ article p {
 
 article img {
   display: block;
-  border-radius: 3px;
+  border-radius: 4px;
   /* max-width: calc(100% + var(--space6) * 2);
   margin-left: calc(-1 * var(--space6));
   margin-right: calc(-1 * var(--space6)); */
@@ -445,23 +446,6 @@ article img {
   margin-bottom: var(--space6);
   box-shadow: 3px 15px 15px 0px rgba(0, 0, 0, 0.1),
     3px 15px 10px 0px rgba(0, 0, 0, 0.1), 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-/** --- Pre --- */
-article pre {
-  background-color: var(--slate3);
-  color: var(--blue12);
-  border-radius: 3px;
-  margin-left: calc(-1 * var(--space6));
-  margin-right: calc(-1 * var(--space6));
-  padding-left: var(--space6);
-  padding-right: var(--space6);
-  padding-top: var(--space3);
-  padding-bottom: var(--space3);
-  margin-top: var(--space6);
-  margin-bottom: var(--space6);
-  font-size: 0.925em;
-  overflow-x: auto;
 }
 
 article p code {
@@ -473,9 +457,9 @@ article p code {
   padding-top: 3px;
   padding-bottom: 2px;
   border: 1px solid var(--slate7);
-  border-radius: 3px;
+  border-radius: 4px;
   background-color: var(--slate1);
-  color: var(--blue11);
+  color: var(--blue10);
 }
 
 /** --- Footer --- */
