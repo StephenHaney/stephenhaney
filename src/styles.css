@@ -151,7 +151,7 @@ body {
 }
 
 ::selection {
-  background: var(--cyan7);
+  background: var(--cyan5);
 }
 
 /** --- Blobs --- */
@@ -405,14 +405,13 @@ article p {
   margin-top: var(--space4);
   margin-bottom: var(--space4);
   letter-spacing: 0.2px;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 @media only screen and (min-width: 600px) {
   article p {
     margin-top: var(--space5);
     margin-bottom: var(--space5);
-    font-size: 1em;
   }
 }
 
