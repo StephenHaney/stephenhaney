@@ -151,7 +151,7 @@ body {
 }
 
 ::selection {
-  background: var(--cyan7);
+  background: var(--cyan5);
 }
 
 /** --- Blobs --- */
@@ -282,13 +282,13 @@ body {
   height: 100%;
 }
 
-.dark-mode .moon-icon {
-  display: none;
-}
-.sun-icon {
-  display: none;
-}
 .dark-mode .sun-icon {
+  display: none;
+}
+.moon-icon {
+  display: none;
+}
+.dark-mode .moon-icon {
   display: block;
 }
 
@@ -405,14 +405,13 @@ article p {
   margin-top: var(--space4);
   margin-bottom: var(--space4);
   letter-spacing: 0.2px;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 @media only screen and (min-width: 600px) {
   article p {
     margin-top: var(--space5);
     margin-bottom: var(--space5);
-    font-size: 1em;
   }
 }
 
@@ -441,7 +440,7 @@ article p code {
   border: 1px solid var(--slate7);
   border-radius: 4px;
   background-color: var(--slate1);
-  color: var(--cyan9);
+  color: var(--cyan11);
 }
 
 /** --- Footer --- */
