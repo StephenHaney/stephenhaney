@@ -88,10 +88,12 @@ th {
   --space2: 12px;
   --space3: 16px;
   --space4: 28px;
-  --space5: 40px;
+  --space5: 36px;
   --space6: 56px;
   --space7: 80px;
   --space8: 100px;
+
+  --content-max-width: 1000px;
 
   color-scheme: light dark; /* both supported */
 }
@@ -146,44 +148,20 @@ body {
   padding-right: var(--space2);
 
   max-width: 100%;
+  overflow-x: hidden;
 
   background-color: var(--body-background);
 }
 
 ::selection {
-  background: var(--cyan5);
-}
-
-/** --- Blobs --- */
-.background-blobs {
-  height: 100vh;
-  width: 100%;
-  position: absolute;
-  top: -50px;
-  left: 0;
-  z-index: -1;
-
-  opacity: 0.7;
-  filter: blur(130px);
-
-  background: radial-gradient(
-      ellipse 70% 450px at 26% -50px,
-      var(--cyan9),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 50% 200px at 63% 200px,
-      rgb(141, 164, 239, 0),
-      transparent
-    ),
-    radial-gradient(ellipse 30% 120px at 65% 0px, var(--cyan8), transparent);
+  background: var(--cyan6);
 }
 
 /** --- Header --- */
 
 .site-header {
   display: flex;
-  max-width: 980px;
+  max-width: var(--content-max-width);
   justify-content: space-between;
   margin: auto;
   margin-top: var(--space3);
@@ -218,34 +196,26 @@ body {
 @media (hover: hover) {
   .site-header a:hover {
     border-radius: 4px;
-    background-color: hsl(185, 73.3%, 97.1%, 0.8);
+    background-color: var(--slate4);
+    background: linear-gradient(20deg, var(--slate3), var(--slate4));
   }
 
   .dark-mode .site-header a:hover {
-    background-color: hsla(192, 71.4%, 8.2%, 0.9);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
-/*
-.site-header nav::before {
-  content: ' ';
-  background-color: var(--cyan6);
-  position: absolute;
-  top: -20px;
-  right: -100px;
-  bottom: -20px;
-  left: -100px;
-
-  z-index: -1;
-  filter: blur(150px);
-} */
 
 .site-header a.logo {
   font-weight: 600;
   font-size: 0.9em;
-  color: var(--slate12);
   padding-top: var(--space2);
   padding-bottom: var(--space2);
   border-radius: 5px;
+}
+@media only screen and (min-width: 600px) {
+  .site-header a.logo {
+    margin-left: calc(-1 * var(--space3));
+  }
 }
 
 .logo-avatar {
@@ -268,6 +238,11 @@ body {
   height: 42px;
   color: var(--cyan12);
   margin-left: var(--space3);
+}
+@media only screen and (min-width: 600px) {
+  .dark-mode-switcher {
+    margin-right: calc(-1 * var(--space2));
+  }
 }
 
 @media (hover: hover) {
@@ -295,7 +270,7 @@ body {
 /** --- Article --- */
 
 article {
-  max-width: 720px;
+  max-width: var(--content-max-width);
   margin: auto;
   padding-bottom: var(--space8);
 }
@@ -311,7 +286,7 @@ article {
 @media only screen and (min-width: 600px) {
   .article-header {
     margin-top: var(--space6);
-    margin-bottom: var(--space5);
+    margin-bottom: 40px;
   }
 }
 
@@ -347,7 +322,7 @@ h1 {
 article h2 {
   font-size: 1.5em;
   font-weight: 600;
-  color: var(--slate12);
+  color: var(--cyan12);
   margin-top: var(--space6);
   margin-bottom: var(--space3);
   letter-spacing: -0.3px;
@@ -395,7 +370,7 @@ article a {
 @media (hover: hover) {
   article a:hover {
     color: var(--slate1);
-    background: linear-gradient(70deg, var(--cyan11), var(--cyan9));
+    background: linear-gradient(70deg, var(--cyan10), var(--cyan9));
   }
 }
 
@@ -406,6 +381,7 @@ article p {
   margin-bottom: var(--space4);
   letter-spacing: 0.2px;
   font-size: 1em;
+  max-width: 720px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -419,14 +395,9 @@ article p {
 
 article img {
   display: block;
-  border-radius: 4px;
-  /* max-width: calc(100% + var(--space6) * 2);
-  margin-left: calc(-1 * var(--space6));
-  margin-right: calc(-1 * var(--space6)); */
+  border-radius: 5px;
   margin-top: var(--space6);
   margin-bottom: var(--space6);
-  box-shadow: 3px 15px 15px 0px rgba(0, 0, 0, 0.1),
-    3px 15px 10px 0px rgba(0, 0, 0, 0.1), 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 article p code {
@@ -437,10 +408,10 @@ article p code {
   padding-right: 4px;
   padding-top: 3px;
   padding-bottom: 2px;
-  border: 1px solid var(--slate7);
+  border: 1px solid var(--slate6);
   border-radius: 4px;
   background-color: var(--slate1);
-  color: var(--cyan11);
+  color: var(--slate12);
 }
 
 /** --- Footer --- */
