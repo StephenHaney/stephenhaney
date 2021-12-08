@@ -341,7 +341,6 @@
 }
 
 article pre {
-  border-radius: 5px;
   margin-top: var(--space4);
   margin-bottom: var(--space4);
   overflow-x: auto;
@@ -375,6 +374,8 @@ article pre {
 
 @media only screen and (min-width: 600px) {
   article pre {
+    border-radius: 5px;
+
     margin-left: calc(-1 * var(--space6));
     margin-right: 0;
     padding-left: var(--space6);
