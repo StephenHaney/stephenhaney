@@ -211,6 +211,7 @@ body {
   padding-top: var(--space2);
   padding-bottom: var(--space2);
   border-radius: 5px;
+  position: relative;
 }
 @media only screen and (min-width: 600px) {
   .site-header a.logo {
@@ -218,13 +219,13 @@ body {
   }
 }
 
-.logo-avatar {
+.logo-avatar img {
+  display: block;
+  margin-right: var(--space3);
   object-fit: cover;
   border-radius: 99999px;
-  margin-right: var(--space3);
-  width: 45px;
-  height: 45px;
-  box-shadow: 0px 0px 0px 1px var(--cyan6);
+  width: 47px;
+  height: 47px;
 }
 
 .dark-mode-switcher {
@@ -279,7 +280,6 @@ article {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: calc(-1 * var(--space3));
   margin-top: var(--space3);
   margin-bottom: var(--space5);
 }
@@ -300,9 +300,11 @@ h1 {
   font-weight: 700;
   color: var(--cyan12);
 
-  padding: var(--space3) var(--space3) var(--space1) var(--space3);
-  /* background: linear-gradient(20deg, var(--cyan1), var(--cyan2)); */
+  padding-top: var(--space3);
+  padding-bottom: var(--space1);
   border-radius: 6px 6px 6px 0;
+
+  margin-left: -1px;
 
   position: relative;
 }
@@ -316,7 +318,7 @@ h1 {
   font-size: 0.8em;
   color: var(--slate11);
   border-radius: 0 0 6px 6px;
-  padding: 0 var(--space3);
+  padding-left: 8px;
 }
 
 article h2 {
@@ -331,7 +333,8 @@ article h2 {
 @media only screen and (min-width: 600px) {
   article h2 {
     font-size: 1.7em;
-    margin-bottom: var(--space4);
+    margin-top: var(--space7);
+    margin-bottom: var(--space5);
   }
 }
 

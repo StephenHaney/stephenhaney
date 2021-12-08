@@ -392,7 +392,7 @@ article pre {
 
 article pre::selection,
 article pre ::selection {
-  background: var(--gray5);
+  background: var(--gray6);
 }
 
 pre[class*='language-'] {
