@@ -30,7 +30,7 @@
           target="_blank"
           >linkedin</a
         >
-
+<import test="woot" />
         <button
           class="dark-mode-switcher moon"
           onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');"
@@ -50,7 +50,6 @@
               clip-rule="evenodd"
             ></path>
           </svg>
-
           <svg
             class="sun-icon"
             width="15"
@@ -70,6 +69,8 @@
       </nav>
     </header>
 
+
+
     <main>
       <article>
         <header class="article-header">
@@ -88,7 +89,7 @@
           But it turns out that there are bugs with
           <code>contenteditable</code> and <code>innerText</code> linebreaks.
           For me, Chrome reports too many linebreaks. And I’m finding reports of
-          FireFox doing the same.
+          FireFox doing the same
         </p>
 
         <pre><code class="language-javascript">
@@ -225,7 +226,7 @@ parseChildNodesForValueAndLines(e.currentTarget.childNodes);
         </p>
       </article>
 
-      <footer></footer>
+      <import src="footer.html" />
     </main>
 
     <script>

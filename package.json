@@ -1,17 +1,20 @@
 {
   "name": "stephen",
   "version": "0.0.1",
+  "type": "module",
   "author": "Stephen Haney",
   "description": "",
   "scripts": {
-    "start": "live-server ./src",
-    "build": ""
+    "start": "node scripts/watch.js",
+    "build": "node scripts/build.js"
   },
   "homepage": "https://www.stephenhaney.com",
   "devDependencies": {
     "@types/node": "^16.11.12",
+    "chokidar": "^3.5.2",
     "live-server": "^1.2.1",
     "posthtml": "^0.16.5",
-    "posthtml-include": "^1.7.2"
+    "posthtml-include": "^1.7.2",
+    "posthtml-md": "^1.1.0"
   }
 }

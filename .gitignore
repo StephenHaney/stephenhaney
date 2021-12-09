@@ -32,3 +32,8 @@ out
 dist
 dist-ssr
 *.local
+
+# rust
+# Generated files
+target/
+
