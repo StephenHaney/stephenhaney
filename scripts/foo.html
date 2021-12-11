@@ -30,7 +30,7 @@
           target="_blank"
           >linkedin</a
         >
-        <import test="woot" />
+        
         <button
           class="dark-mode-switcher moon"
           onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');"
@@ -209,23 +209,17 @@ parseChildNodesForValueAndLines(e.currentTarget.childNodes);
         </code></pre>
 
 
-        <pre markdown>
-*this is a test!* You'll also need
-`white-space: pre-wrap` set on your elements to preserve
-your linebreaks.
-
-<br /><br />
-
+        <p><em>this is a test!</em> You'll also need
+<code>white-space: pre-wrap</code> set on your elements to preserve
+your linebreaks.</p>
+<p><br /><br /></p>
 <pre><code>manual test</code></pre>
-
-```css
-@media () {
+<pre><code class="language-css">@media () {
 
 }
-```
+</code></pre>
+<h2>Markdown babbbaayyy</h2>
 
-## Markdown babbbaayyy
-        </pre markdown>
 
         <p>
           During testing, I’ve another found issue in Safari where a single
@@ -240,7 +234,12 @@ your linebreaks.
         </p>
       </article>
 
-      <import src="footer.html" />
+      
+
+<footer>
+  Good night and good luck
+</footer>
+
     </main>
 
     <script>

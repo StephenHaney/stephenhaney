@@ -1,10 +1,10 @@
 extern crate notify;
-
 use notify::{watcher, DebouncedEvent, RecursiveMode, Watcher};
+use std::env;
 use std::sync::mpsc::channel;
 use std::time::Duration;
 
-mod parse_file;
+mod bake_html;
 
 // Watch directory, run build script on individual files that change
 
@@ -21,6 +21,9 @@ mod parse_file;
 //   5. has flag for preview / true build to out directory
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    println!("{:?}", args.contains(&String::from("watch")));
+
     // Create a channel to receive the events.
     let (tx, rx) = channel();
 
@@ -36,7 +39,7 @@ fn main() {
         match rx.recv() {
             Ok(event) => match &event {
                 DebouncedEvent::Write(path) => {
-                    parse_file::parse_file(path);
+                    bake_html::bake_html_file(path);
                 }
                 _ => {
                     println!("{:?}", &event)

@@ -1,29 +1,24 @@
 use std::collections::HashMap;
 use std::fs;
 
-struct HTMLAttribute {
-  name: String,
-  value: String,
-}
+/// This function extracts all <import>'s out of the HTML and replaces them
+pub fn bake_imports(import_path: &std::path::PathBuf, raw_html: &str) -> String {
+  // This string starts as the entire raw_html and gets chopped down as we move through it
+  let mut working_string = raw_html.to_owned();
+  // baked_html is the finished return string that we work towards
+  let mut baked_html: String = String::from("");
 
-pub fn parse_file(path: &std::path::PathBuf) {
-  println!("Parsing path {:?}", path);
-
-  let mut baked_html: String = "".to_owned();
-  let mut raw_html = fs::read_to_string(path).expect("Something went wrong reading the file");
-
-  // This section extracts all <import>'s out of the HTML and replaces them
-  while let Some(index_of_import) = raw_html.find("<import") {
-    let start_of_import = index_of_import;
+  while let Some(index_of_import) = working_string.find("<import") {
     // Grab the string before the import we found
-    let prepend = &raw_html[0..start_of_import];
-    let rest_of_string = &raw_html[start_of_import + 1..];
+    let prepend = &working_string[0..index_of_import];
+    let rest_of_string = &working_string[index_of_import + 1..];
     // +2 is the size of />
     let import_length = 2
       + rest_of_string
         .find("/>")
         .expect("Malformed <import, cannot find ending />");
-    let import_with_attributes = &raw_html[start_of_import..start_of_import + import_length + 1];
+    let import_with_attributes =
+      &working_string[index_of_import..index_of_import + import_length + 1];
     // Grab the rest of the string after the /> of the import)
     let append = &rest_of_string[import_length..];
 
@@ -38,11 +33,12 @@ pub fn parse_file(path: &std::path::PathBuf) {
       }
     }
 
+    // Grab the src html file and pop it into the baked_html
     let mut html_to_insert = String::from("");
     if attributes.contains_key("src") {
       // Grab the HTML from the file to insert
       let src_path = std::path::PathBuf::from(&attributes["src"]);
-      let mut full_import_path = path.clone();
+      let mut full_import_path = import_path.clone();
 
       // Pop the file name off the HTML file path we're parsing
       full_import_path.pop();
@@ -63,29 +59,31 @@ pub fn parse_file(path: &std::path::PathBuf) {
     baked_html.push_str(prepend);
     baked_html.push_str(&html_to_insert);
     // Keep parsing through what remains
-    raw_html = String::from(append);
+    working_string = String::from(append);
   }
 
-  // Whatever's left of raw_html can be inserted now
-  baked_html.push_str(&raw_html);
+  // Whatever's left of working_string can be inserted now
+  baked_html.push_str(&working_string);
 
-  fs::write("./foo.html", baked_html).expect("Unable to write file");
+  return baked_html;
 }
 
 // Takes an unparsed attribute chunk like abc="def" and turns it into
 // attribute name and attribute value
 fn parse_attribute(raw_attribute: &str) -> Option<HTMLAttribute> {
-  let index_of_equals = raw_attribute.find("=");
+  if let Some(index_of_equals) = raw_attribute.find("=") {
+    let parsed = HTMLAttribute {
+      name: String::from(&raw_attribute[..index_of_equals]),
+      value: String::from(&raw_attribute[index_of_equals + 1..]).replace("\"", ""),
+    };
 
-  match index_of_equals {
-    None => return None,
-    _ => {
-      let parsed = HTMLAttribute {
-        name: String::from(&raw_attribute[..index_of_equals.unwrap()]),
-        value: String::from(&raw_attribute[index_of_equals.unwrap() + 1..]).replace("\"", ""),
-      };
-
-      return Option::from(parsed);
-    }
+    return Option::from(parsed);
+  } else {
+    return None;
   }
+}
+
+struct HTMLAttribute {
+  name: String,
+  value: String,
 }
