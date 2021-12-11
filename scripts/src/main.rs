@@ -24,16 +24,20 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args.contains(&String::from("watch")));
 
+    // Find the src directory to build from
+    let src_directory = env::current_dir().unwrap().join("src");
+
     // Create a channel to receive the events.
     let (tx, rx) = channel();
-
     // Create a watcher object, delivering debounced events.
     // The notification back-end is selected based on the platform.
     let mut watcher = watcher(tx, Duration::from_secs(1)).unwrap();
 
     // Add a path to be watched. All files and directories at that path and
     // below will be monitored for changes.
-    watcher.watch("../src", RecursiveMode::Recursive).unwrap();
+    watcher
+        .watch(src_directory, RecursiveMode::Recursive)
+        .unwrap();
 
     loop {
         match rx.recv() {
