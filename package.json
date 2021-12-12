@@ -7,7 +7,7 @@
   "scripts": {
     "start": "./scripts/build_script --watch",
     "start-dev-build": "cargo run --manifest-path scripts/Cargo.toml",
-    "build": "./scripts/build_script"
+    "build": "uname -m && ./scripts/build_script"
   },
   "homepage": "https://www.stephenhaney.com"
 }
