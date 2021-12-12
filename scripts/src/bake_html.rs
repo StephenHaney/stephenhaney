@@ -4,7 +4,7 @@ mod bake_imports;
 mod bake_markdown;
 
 pub fn bake_html_file(path: &std::path::PathBuf) {
-  println!("Parsing path {:?}", path);
+  println!("Building {:?}", &path);
 
   // Load the HTML from the file system
   let html_from_file = fs::read_to_string(path).expect("Something went wrong reading the file");

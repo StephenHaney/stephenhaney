@@ -5,7 +5,8 @@
   "author": "Stephen Haney",
   "description": "",
   "scripts": {
-    "start": "cd scripts && cargo run -- watch",
+    "start": "./scripts/target/release/scripts --watch",
+    "start-dev-build": "cargo run --manifest-path scripts/Cargo.toml",
     "build": "./scripts/target/release/scripts"
   },
   "homepage": "https://www.stephenhaney.com"

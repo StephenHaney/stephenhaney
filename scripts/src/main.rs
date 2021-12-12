@@ -1,10 +1,13 @@
 extern crate notify;
 use notify::{watcher, DebouncedEvent, RecursiveMode, Watcher};
 use std::env;
+use std::path::PathBuf;
 use std::sync::mpsc::channel;
 use std::time::Duration;
+use walkdir::WalkDir;
 
 mod bake_html;
+mod copy_file;
 
 // Watch directory, run build script on individual files that change
 
@@ -22,11 +25,47 @@ mod bake_html;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("{:?}", args.contains(&String::from("watch")));
+    println!("{:?}", args);
 
     // Find the src directory to build from
     let src_directory = env::current_dir().unwrap().join("src");
 
+    // Do the build
+    build_directory(&src_directory);
+
+    // If we're watching, start watching
+    if args.contains(&String::from("--watch")) {
+        watch(&src_directory);
+    }
+}
+
+// Build and copy an entire src directory to dist
+fn build_directory(src_directory: &PathBuf) {
+    for entry in WalkDir::new(src_directory)
+        .into_iter()
+        .filter_map(Result::ok)
+    {
+        // Skip directories
+        if let Ok(metadata) = entry.metadata() {
+            if metadata.is_dir() {
+                continue;
+            }
+        }
+
+        let entry_path = &PathBuf::from(entry.path());
+        let file_extension = &entry_path.extension().and_then(std::ffi::OsStr::to_str);
+
+        match file_extension {
+            // Run HTML through special processing:
+            Some("html") => bake_html::bake_html_file(entry_path),
+            // Anything else, copy over directly:
+            _ => copy_file::copy_file(entry_path),
+        }
+    }
+}
+
+/// Watch a directory and rebuild changed HTML files
+fn watch(src_directory: &std::path::PathBuf) {
     // Create a channel to receive the events.
     let (tx, rx) = channel();
     // Create a watcher object, delivering debounced events.
