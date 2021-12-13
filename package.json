@@ -6,8 +6,13 @@
   "description": "",
   "scripts": {
     "start": "./scripts/build_script --watch",
-    "start-dev-build": "cargo run --manifest-path scripts/Cargo.toml",
+    "start-dev-build": "concurrently -kill-others-on-fail \"cargo run --manifest-path scripts/Cargo.toml -- --watch\" \"cd dist && live-server --no-css-inject\"",
+    "build-dev-build": "cargo run --manifest-path scripts/Cargo.toml",
     "build": "./scripts/build_script_x86_linux"
   },
-  "homepage": "https://www.stephenhaney.com"
+  "homepage": "https://www.stephenhaney.com",
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "live-server": "^1.2.1"
+  }
 }

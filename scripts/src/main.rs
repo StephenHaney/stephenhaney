@@ -70,7 +70,7 @@ fn watch(src_directory: &std::path::PathBuf) {
     let (tx, rx) = channel();
     // Create a watcher object, delivering debounced events.
     // The notification back-end is selected based on the platform.
-    let mut watcher = watcher(tx, Duration::from_secs(1)).unwrap();
+    let mut watcher = watcher(tx, Duration::from_millis(200)).unwrap();
 
     // Add a path to be watched. All files and directories at that path and
     // below will be monitored for changes.
