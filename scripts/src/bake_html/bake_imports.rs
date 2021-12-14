@@ -1,8 +1,13 @@
+use super::bake_html_file;
 use std::collections::HashMap;
-use std::fs;
+use std::path::PathBuf;
 
 /// This function extracts all <import>'s out of the HTML and replaces them
-pub fn bake_imports(import_path: &std::path::PathBuf, raw_html: &str) -> String {
+pub fn bake_imports(
+  html_cache: &HashMap<PathBuf, String>,
+  import_path: &std::path::PathBuf,
+  raw_html: &str,
+) -> String {
   // This string starts as the entire raw_html and gets chopped down as we move through it
   let mut working_string = raw_html.to_owned();
   // baked_html is the finished return string that we work towards
@@ -33,31 +38,31 @@ pub fn bake_imports(import_path: &std::path::PathBuf, raw_html: &str) -> String 
       }
     }
 
+    // Build out the full path to the src file:
+    let mut full_import_path = import_path.clone();
     // Grab the src html file and pop it into the baked_html
-    let mut html_to_insert = String::from("");
     if attributes.contains_key("src") {
-      // Grab the HTML from the file to insert
+      // Grab the HTML from the file to insert, both the src path:
       let src_path = std::path::PathBuf::from(&attributes["src"]);
-      let mut full_import_path = import_path.clone();
-
       // Pop the file name off the HTML file path we're parsing
       full_import_path.pop();
-      // Join on the src path we found in the
+      // Join on the src path we found in the HTML attribute
       full_import_path.push(src_path);
 
-      if let Ok(import_raw_html) = fs::read_to_string(&full_import_path) {
-        html_to_insert = import_raw_html.clone();
-      } else {
-        println!(
-          "Warning: could not find HTML file for import {:?}",
-          full_import_path
-        )
+      // If we do not already this path's html cached, we need to pull it from the file system and bake it recursively
+      if html_cache.contains_key(&full_import_path) == false {
+        let baked_html = bake_html_file(html_cache, &full_import_path);
+        html_cache.insert(full_import_path, baked_html);
       }
     }
 
     // Reassemble the HTML into the baked contents
     baked_html.push_str(prepend);
-    baked_html.push_str(&html_to_insert);
+    baked_html.push_str(
+      &html_cache
+        .get(&full_import_path)
+        .unwrap_or(&String::from("")),
+    );
     // Keep parsing through what remains
     working_string = String::from(append);
   }
