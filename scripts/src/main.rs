@@ -27,26 +27,25 @@ mod copy_file;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    println!("{:?}", args);
 
     // Keep track of HTML we've already compiled so we don't have to do it multiple times
     // if a file is used multiple times in a graph
-    let mut baked_html_cache = HashMap::<PathBuf, String>::new();
+    let baked_html_cache = &mut HashMap::<PathBuf, String>::new();
 
     // Find the src directory to build from
     let src_directory = env::current_dir().unwrap().join("src");
 
     // Do the build
-    build_directory(&baked_html_cache, &src_directory);
+    build_directory(baked_html_cache, &src_directory);
 
     // If we're watching, start watching
     if args.contains(&String::from("--watch")) {
-        watch(&baked_html_cache, &src_directory);
+        watch(baked_html_cache, &src_directory);
     }
 }
 
 // Build and copy an entire src directory to dist
-fn build_directory(html_cache: &HashMap<PathBuf, String>, src_directory: &PathBuf) {
+fn build_directory(html_cache: &mut HashMap<PathBuf, String>, src_directory: &PathBuf) {
     for entry in WalkDir::new(src_directory)
         .into_iter()
         .filter_map(Result::ok)
@@ -96,7 +95,7 @@ fn build_directory(html_cache: &HashMap<PathBuf, String>, src_directory: &PathBu
 }
 
 /// Watch a directory and rebuild changed HTML files
-fn watch(html_cache: &HashMap<PathBuf, String>, src_directory: &std::path::PathBuf) {
+fn watch(html_cache: &mut HashMap<PathBuf, String>, src_directory: &std::path::PathBuf) {
     // Create a channel to receive the events.
     let (tx, rx) = channel();
     // Create a watcher object, delivering debounced events.

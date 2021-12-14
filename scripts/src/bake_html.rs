@@ -6,7 +6,10 @@ mod bake_imports;
 mod bake_markdown;
 
 // Runs all processing we need to turn a raw HTML file into a finished, polished file, ready for prod
-pub fn bake_html_file(html_cache: &HashMap<PathBuf, String>, path: &std::path::PathBuf) -> String {
+pub fn bake_html_file(
+  html_cache: &mut HashMap<PathBuf, String>,
+  path: &std::path::PathBuf,
+) -> String {
   println!("Building {:?}", &path);
 
   // Load the HTML from the file system

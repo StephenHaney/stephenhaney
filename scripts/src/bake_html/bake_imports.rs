@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 /// This function extracts all <import>'s out of the HTML and replaces them
 pub fn bake_imports(
-  html_cache: &HashMap<PathBuf, String>,
+  html_cache: &mut HashMap<PathBuf, String>,
   import_path: &std::path::PathBuf,
   raw_html: &str,
 ) -> String {
@@ -39,7 +39,7 @@ pub fn bake_imports(
     }
 
     // Build out the full path to the src file:
-    let mut full_import_path = import_path.clone();
+    let full_import_path = &mut import_path.clone();
     // Grab the src html file and pop it into the baked_html
     if attributes.contains_key("src") {
       // Grab the HTML from the file to insert, both the src path:
@@ -50,9 +50,9 @@ pub fn bake_imports(
       full_import_path.push(src_path);
 
       // If we do not already this path's html cached, we need to pull it from the file system and bake it recursively
-      if html_cache.contains_key(&full_import_path) == false {
+      if html_cache.contains_key(full_import_path) == false {
         let baked_html = bake_html_file(html_cache, &full_import_path);
-        html_cache.insert(full_import_path, baked_html);
+        html_cache.insert(full_import_path.to_owned(), baked_html);
       }
     }
 
@@ -60,7 +60,7 @@ pub fn bake_imports(
     baked_html.push_str(prepend);
     baked_html.push_str(
       &html_cache
-        .get(&full_import_path)
+        .get(full_import_path)
         .unwrap_or(&String::from("")),
     );
     // Keep parsing through what remains
