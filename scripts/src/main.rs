@@ -2,7 +2,6 @@ extern crate notify;
 use notify::{watcher, DebouncedEvent, RecursiveMode, Watcher};
 use std::collections::HashMap;
 use std::env;
-use std::fs;
 use std::path::PathBuf;
 use std::sync::mpsc::channel;
 use std::time::Duration;
@@ -50,29 +49,12 @@ fn build_directory(html_cache: &mut HashMap<PathBuf, String>, src_directory: &Pa
         match file_extension {
             // Run HTML through special processing:
             Some("html") => {
-                let local_copy_entry_path = entry_path.to_owned();
-                // Do we have the baked HTML in cache?
+                // It's possible we've already seen this file if it was imported by an earlier html file
+                // So we only need to bake it to disk if it's not already in the cache:
                 if html_cache.contains_key(&entry_path) == false {
                     // First time we've seen this file, bake it:
                     let baked_html = bake_html::bake_html_file(html_cache, &entry_path);
                     html_cache.insert(entry_path, baked_html);
-                }
-
-                // Write the baked file to disk
-                if let Some(path_as_str) = local_copy_entry_path.to_str() {
-                    // Build the output path
-                    let final_path_string = path_as_str.replacen("src", "dist", 1);
-                    let final_path = std::path::PathBuf::from(&final_path_string);
-                    if let Some(final_path_directories) = final_path.parent() {
-                        // Create the directories we need if they don't exist yet:
-                        fs::create_dir_all(&final_path_directories)
-                            .expect("Could not create directories for the dist folder");
-                        // Grab the final HTML from our cache:
-                        let baked_html_to_write =
-                            html_cache.get(&local_copy_entry_path).expect("Must exist");
-                        // Write the file:
-                        fs::write(final_path, baked_html_to_write).expect("Unable to write file");
-                    }
                 }
             }
             // Anything else, copy over directly:
