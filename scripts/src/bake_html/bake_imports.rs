@@ -1,4 +1,4 @@
-use super::bake_html_file_to_cache_and_fs;
+use super::bake_html_file_to_fs_and_cache;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
@@ -51,7 +51,7 @@ pub fn bake_imports(
 
       // If we do not already this path's html cached, we need to pull it from the file system and bake it recursively
       if html_cache.contains_key(full_import_path) == false {
-        bake_html_file_to_cache_and_fs(html_cache, &full_import_path);
+        bake_html_file_to_fs_and_cache(html_cache, &full_import_path);
       }
     }
 

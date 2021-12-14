@@ -53,7 +53,7 @@ fn build_directory(html_cache: &mut HashMap<PathBuf, String>, src_directory: &Pa
                 // So we only need to bake it to disk if it's not already in the cache:
                 if html_cache.contains_key(&entry_path) == false {
                     // First time we've seen this file, bake it:
-                    bake_html::bake_html_file_to_cache_and_fs(html_cache, &entry_path);
+                    bake_html::bake_html_file_to_fs_and_cache(html_cache, &entry_path);
                 }
             }
             // Anything else, copy over directly:
@@ -81,7 +81,7 @@ fn watch(html_cache: &mut HashMap<PathBuf, String>, src_directory: &std::path::P
             Ok(event) => match &event {
                 DebouncedEvent::Write(path) => {
                     html_cache.remove(path);
-                    bake_html::bake_html_file_to_cache_and_fs(html_cache, path);
+                    bake_html::bake_html_file_to_fs_and_cache(html_cache, path);
                 }
                 _ => {
                     println!("{:?}", &event)

@@ -6,7 +6,7 @@ mod bake_imports;
 mod bake_markdown;
 
 // Runs all processing we need to turn a raw HTML file into a finished, polished file, ready for prod
-pub fn bake_html_file_to_cache_and_fs(
+pub fn bake_html_file_to_fs_and_cache(
   html_cache: &mut HashMap<PathBuf, String>,
   path: &std::path::PathBuf,
 ) {
