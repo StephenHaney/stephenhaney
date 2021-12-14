@@ -6,10 +6,10 @@ mod bake_imports;
 mod bake_markdown;
 
 // Runs all processing we need to turn a raw HTML file into a finished, polished file, ready for prod
-pub fn bake_html_file(
+pub fn bake_html_file_to_cache_and_fs(
   html_cache: &mut HashMap<PathBuf, String>,
   path: &std::path::PathBuf,
-) -> String {
+) {
   println!("Building {:?}", &path);
 
   // Load the HTML from the file system
@@ -17,6 +17,8 @@ pub fn bake_html_file(
     // Move through our logic to bake the final HTML form
     let mut baked_html = bake_imports::bake_imports(html_cache, path, &html_from_file);
     baked_html = bake_markdown::bake_markdown(&baked_html);
+    // Cache the baked HTML:
+    html_cache.insert(path.to_owned(), baked_html);
 
     // Write the baked file to disk
     if let Some(path_as_str) = path.to_str() {
@@ -33,8 +35,6 @@ pub fn bake_html_file(
         fs::write(final_path, baked_html_to_write).expect("Unable to write file");
       }
     }
-
-    return baked_html;
   } else {
     panic!("Warning: could not find HTML file for import {:?}", path);
   }
