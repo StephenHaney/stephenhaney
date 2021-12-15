@@ -9,13 +9,17 @@
 
     <main>
       <article>
+        <!-- Article head -->
         <header class="article-header">
-          <h1>Sorry, nothing found at this address</h1>
+          <h1>{{ title }}</h1>
+          <div class="by-line">&#10174; By {{ author }} on {{ publish_date }}</div>
         </header>
-        <p><a href="/">Return home</a></p>
-      </article>
+
+        {{ markdown_content }}
     </main>
 
+
     <import src="common/_theme-switcher.html" />
+    <script src="prism/prism.js" defer></script>
   </body>
 </html>

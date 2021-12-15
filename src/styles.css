@@ -142,6 +142,7 @@ body {
   line-height: 28px;
   color: var(--slate12);
   overscroll-behavior: none;
+  overflow-y: scroll;
 
   /* overflow-x: hidden; */
   padding-left: var(--space2);

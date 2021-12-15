@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 pulldown-cmark = "0.8"
 notify = "4.0.17"
-walkdir = " 2.3.2"
+walkdir = "2.3.2"
+gray_matter = "0.2.1"
