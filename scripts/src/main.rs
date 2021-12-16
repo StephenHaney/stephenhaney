@@ -124,7 +124,7 @@ fn build_file(file_path: &std::path::PathBuf) {
             let highest_search_dir = std::env::current_dir().unwrap().join("src");
             let mut template_file_path = PathBuf::new();
             for ancestor in file_path.ancestors() {
-                template_file_path = ancestor.join("_template.html");
+                template_file_path = ancestor.join("__template.html");
                 if template_file_path.exists() || ancestor == highest_search_dir {
                     break;
                 }
