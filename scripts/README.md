@@ -3,10 +3,10 @@
 run this to build the linux binary:
 
 ```
-cargo build --release && cargo build --release --target x86_64-unknown-linux-musl
+cargo build --release && cargo build --release --target x86_64-unknown-linux-musl && mv target/release/scripts build_script_arm && mv target/x86_64-unknown-linux-musl/release/scripts build_script_x86_linux
 ```
 
-then copy the binaries out of `target` dir into the main directory of `scripts`, named as:
+this also copies the binaries out of `target` dir into the main directory of `scripts`, named as:
 build_script_x86_linux for cloudflare build
 build_script_arm for running on mac
 

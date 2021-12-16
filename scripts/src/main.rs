@@ -100,7 +100,7 @@ fn build_file(file_path: &std::path::PathBuf) {
     let file_extension = file_path.extension().and_then(std::ffi::OsStr::to_str);
 
     // Don't do anything for files that start with an underscore:
-    if file_name.chars().next().unwrap_or_default() == '_' {
+    if &file_name[0..2] == "__" {
         return;
     }
 
