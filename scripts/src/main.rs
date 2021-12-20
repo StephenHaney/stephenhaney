@@ -29,6 +29,9 @@ fn main() {
 
 // Build and copy an entire src directory to dist
 fn build_directory(src_directory: &PathBuf) {
+    // Keep track of how long the build took
+    let build_time_tracker = std::time::Instant::now();
+
     // Delete the dist directory
     if let Some(src_path_str) = src_directory.to_str() {
         let dist_path_str = src_path_str.replace("src", "dist");
@@ -55,6 +58,9 @@ fn build_directory(src_directory: &PathBuf) {
         let entry_path = PathBuf::from(entry.path());
         build_file(&entry_path);
     }
+
+    // Log the duration of the build
+    println!("Full build duration: {:?}", build_time_tracker.elapsed())
 }
 
 /// Watch a directory and rebuild changed HTML files
@@ -101,6 +107,13 @@ fn build_file(file_path: &std::path::PathBuf) {
 
     // Don't do anything for files that start with an underscore:
     if &file_name[0..2] == "__" {
+        return;
+    }
+
+    // If it's inside a directory called "public", just copy it directly over
+    if file_path.to_str().unwrap().contains("/public") {
+        println!("Copying public file: {:?}", &file_path);
+        copy_file::copy_file(file_path);
         return;
     }
 

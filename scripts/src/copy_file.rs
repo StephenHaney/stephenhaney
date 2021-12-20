@@ -7,7 +7,10 @@ pub fn copy_file(path: &std::path::PathBuf) {
   let dist_path_str = path
     .to_str()
     .expect("Could not convert src path correctly")
-    .replacen("src", "dist", 1);
+    // Dist instead of src
+    .replacen("src", "dist", 1)
+    // Remove any public directories with nothing
+    .replace("/public/", "/");
   let dist_path = std::path::PathBuf::from(&dist_path_str);
 
   // Create directories if we need to
