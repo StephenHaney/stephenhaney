@@ -2,10 +2,16 @@ use gray_matter::engine::YAML;
 use gray_matter::Matter;
 use pulldown_cmark::{html, Options, Parser};
 
-pub fn bake_markdown(raw_md: String, template_raw_html: String) -> String {
+pub fn bake_markdown(raw_md: String, template_raw_html: String) -> Option<String> {
   // Parse out frontmatter
   let matter_parser = Matter::<YAML>::new();
   let structured_post = matter_parser.parse(&raw_md);
+
+  if structured_post.data.as_ref().is_none() {
+    println!("MD file is missing its metadata, title, author, and publish_date are required");
+    return None;
+  }
+
   let title = structured_post.data.as_ref().unwrap()["title"]
     .as_string()
     .expect("Could not find title data in markdown");
@@ -33,5 +39,5 @@ pub fn bake_markdown(raw_md: String, template_raw_html: String) -> String {
     // Make sure to keep the big one last since each replace is a fresh allocation
     .replace("{{ markdown_content }}", &baked_html);
 
-  return final_html;
+  return Some(final_html);
 }

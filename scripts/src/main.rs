@@ -146,11 +146,14 @@ fn build_file(file_path: &std::path::PathBuf) {
             let template_raw_html = fs::read_to_string(&template_file_path)
                 .expect("Could not find _template.html file for markdown");
 
-            let mut final_html = bake_markdown::bake_markdown(raw_md, template_raw_html);
-            // We need to use the source path for the template as imports are relative to the template
-            final_html = bake_imports::bake_imports(&template_file_path, final_html);
-            let modified_source_path = file_path.with_extension("html");
-            write_file::write_file(&modified_source_path, &final_html);
+            if let Some(mut final_html) = bake_markdown::bake_markdown(raw_md, template_raw_html) {
+                // We need to use the source path for the template as imports are relative to the template
+                final_html = bake_imports::bake_imports(&template_file_path, final_html);
+                let modified_source_path = file_path.with_extension("html");
+                write_file::write_file(&modified_source_path, &final_html);
+            } else {
+                println!("Skipping markdown file: {:?}", &file_path);
+            }
         }
         // Anything else, copy over directly:
         _ => copy_file::copy_file(file_path),
