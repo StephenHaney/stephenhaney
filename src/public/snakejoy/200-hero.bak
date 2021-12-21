@@ -1,0 +1,203 @@
+/*
+(function () { // :)
+    'use strict';
+
+    grove.world.objectTemplates.Hero = function() {
+        // PIXI:
+        //this.sprite = new Sprite(textures.tree.texture);
+        this.graphic = new PIXI.Graphics();
+
+        // Gameplay stats:
+        this.speed = 5;
+
+        this.initialSize = { width: 63, height: 63 };
+        this.size = { width: this.initialSize.width, height: this.initialSize.height };
+        this.origin = {
+            x: this.size.width / 2,
+            y: this.size.height / 2
+        };
+
+        this.initialPosition = { x: 500, y: 300 };
+        this.position = { x: this.initialPosition.x, y: this.initialPosition.y };
+        this.graphic.position.x = this.position.x;
+        this.graphic.position.y = this.position.y;
+
+        this.vector = { x: 0, y: 1 };
+        this.nextVector = null;
+        this.tailVector = { x: 0, y: 1 };
+
+        // Stores past turns to build out the chain
+        // array of positions: { x: 0, y: 0 }
+        this.lineCoords = [{x: 0, y: 0, dx: 0, dy: 1},{x: 0, y: 189, dx: 0, dy: 1}];
+        // How many segments should we still add?
+        this.segmentsToGrow = 2;
+
+        this.movementSinceLastRevector = 0;
+
+        this.update = function(deltaTime) {
+            this.timeSinceLastJump += deltaTime;
+
+            // Directions: 0 down, 1 left, 2 right, 3 up
+            var top = (grove.currentKeyboard[38] === true || grove.currentKeyboard[87] === true);
+            var bottom = (grove.currentKeyboard[40] === true || grove.currentKeyboard[83] === true);
+            var left = (grove.currentKeyboard[37] === true || grove.currentKeyboard[65] === true);
+            var right = (grove.currentKeyboard[39] === true || grove.currentKeyboard[68] === true);
+            if (top) { this.nextVector = { x: 0, y: -1 }; }
+            if (bottom) { this.nextVector = { x: 0, y: 1 }; }
+            if (left) { this.nextVector = { x: -1, y: 0 }; }
+            else if (right) { this.nextVector = { x: 1, y: 0 }; }
+
+            // Update the graphic
+            this.graphic.clear();
+            this.graphic.lineStyle(this.size.width, 0xFFFFFF, 1);
+            this.graphic.moveTo(this.lineCoords[0].x, this.lineCoords[0].y);
+
+            // Update each segment and recreate its line
+            for (var i = 1; i < this.lineCoords.length; i++) {
+                // Draw a line to this segment:
+                this.graphic.lineTo(this.lineCoords[i].x, this.lineCoords[i].y);
+            }
+
+            // Head movement
+            var movementX = this.vector.x * this.speed * deltaTime;
+            var movementY = this.vector.y * this.speed * deltaTime;
+            this.lineCoords[this.lineCoords.length - 1].x += movementX;
+            this.lineCoords[this.lineCoords.length - 1].y += movementY;
+
+            // Tail movement
+            var tailMovementX = this.tailVector.x * this.speed * deltaTime;
+            var tailMovementY = this.tailVector.y * this.speed * deltaTime;
+            this.lineCoords[0].x += tailMovementX;
+            this.lineCoords[0].y += tailMovementY;
+
+            var totalMovement = movementX === 0 ? movementY : movementX;
+            this.movementSinceLastRevector += totalMovement;
+
+            // We've moved far enough to be in the next grid space
+            if (Math.abs(this.movementSinceLastRevector) >= this.initialSize.width) {
+                this.movementSinceLastRevector = 0;
+                this.chanceToChangeVector();
+            }
+        };
+
+        this.chanceToChangeVector = function() {
+            if (this.lineCoords.length > 2) {
+                this.checkForSnakeOnShake();
+            }
+            // Chance to change head vector
+            if (this.nextVector !== null) {
+                var currentHeadPosition = this.lineCoords[this.lineCoords.length - 1];
+                this.lineCoords.push({
+                    x: currentHeadPosition.x,
+                    y: currentHeadPosition.y
+                });
+                this.vector.x = this.nextVector.x;
+                this.vector.y = this.nextVector.y;
+                this.nextVector = null;
+            }
+
+            // Chance to change tail vector
+            this.tailVector.x = this.lineCoords[1].x - this.lineCoords[0].x;
+            this.tailVector.y = this.lineCoords[1].y - this.lineCoords[0].y;
+            if (this.tailVector.x > 1) { this.tailVector.x = 1;}
+            if (this.tailVector.x < -1) { this.tailVector.x = -1;}
+            if (this.tailVector.y > 1) { this.tailVector.y = 1;}
+            if (this.tailVector.y < -1) { this.tailVector.y = -1;}
+        };
+
+        this.checkForSnakeOnShake = function() {
+            // Check for snake collision
+            var headStartIndex = this.lineCoords.length - 2;
+            var headEndIndex = this.lineCoords.length - 1;
+            var headStart = this.lineCoords[headStartIndex];
+            var headEnd = this.lineCoords[headEndIndex];
+            
+            for (var i = 0; i < this.lineCoords.length - 3; i++) {
+                var collision = isIntersecting(this.lineCoords[i], this.lineCoords[i + 1], headStart, headEnd);
+                if (collision) { grove.paused = true; }
+            }
+        };
+
+        function isIntersecting(a, b, c, d) {
+            var denominator = ((b.x - a.x) * (d.y - c.y)) - ((b.y - a.y) * (d.x - c.x));
+            var numerator1 = ((a.y - c.y) * (d.x - c.x)) - ((a.x - c.x) * (d.y - c.y));
+            var numerator2 = ((a.y - c.y) * (b.x - a.x)) - ((a.x - c.x) * (b.y - a.y));
+            // Detect coincident lines (has a problem, read below)
+            if (denominator === 0) { return (numerator1 === 0 && numerator2 === 0); }
+
+            var r = numerator1 / denominator;
+            var s = numerator2 / denominator;
+
+            return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+        }
+
+        /*this.revectorSegments = function() {
+            if (this.segmentsToGrow > 0) {
+                // Add a new segment!
+                this.segmentsToGrow--;
+                this.segments.push({
+                    x: this.segments[this.segments.length - 1].x,
+                    y: this.segments[this.segments.length - 1].y,
+                    dx: 0,
+                    dy: 0
+                });
+            }
+
+            var nextVector = {
+                x: this.segments[0].dx,
+                y: this.segments[0].dy
+            };
+
+            for (var i = 1; i < this.segments.length; i++) {
+                // Grab the vector to apply to this segment
+                var vectorToApply = {
+                    x: nextVector.x,
+                    y: nextVector.y
+                };
+                // Store this segment's current vector as the next
+                nextVector.x = this.segments[i].dx;
+                nextVector.y = this.segments[i].dx;
+                // Update this segment's vector:
+                this.segments[i].dx = vectorToApply.x;
+                this.segments[i].dy = vectorToApply.y;
+            }
+
+            if (this.nextDirection !== null) {
+                this.segments[0].dx = 0;
+                this.segments[0].dy = 0;
+                // Update the head with the last requested vector:
+                if (this.nextDirection === 0) {
+                    this.segments[0].dy = -1;
+                }
+                else if (this.nextDirection === 1) {
+                    this.segments[0].dx = 1;
+                }
+                else if (this.nextDirection === 2) {
+                    this.segments[0].dy = 1;
+                }
+                else if (this.nextDirection === 3) {
+                    this.segments[0].dx = -1;
+                }
+                this.nextDirection = null;
+            }
+        };*/
+
+        /*this.moveSnake = function() {
+            if ((this.vector.x !== 0 || this.vector.y !== 0)) {
+                // we have a movement request
+                var length = Math.sqrt(this.vector.x * this.vector.x + this.vector.y * this.vector.y);
+
+                this.position.x += this.vector.x * this.speed;
+                this.position.y += this.vector.y * this.speed;
+            }
+
+
+
+            // Keep the sprite's position synced up
+            //this.sprite.position.x = this.position.x;
+            //this.sprite.position.y = this.position.y;
+        };
+    };
+
+})(); // :D
+

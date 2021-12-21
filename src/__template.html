@@ -12,12 +12,11 @@
         <!-- Article head -->
         <header class="article-header">
           <h1>{{ title }}</h1>
-          <div class="by-line">&#10174; By {{ author }} on {{ publish_date }}</div>
+          <div class="by-line">By {{ author }} on {{ publish_date }}</div>
         </header>
 
         {{ markdown_content }}
     </main>
-
 
     <import src="common/__theme-switcher.html" />
     <script src="prism/prism.js" defer></script>

@@ -1,0 +1,537 @@
+/* Reset.less
+ * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here   that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+* {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 1;
+  font-family: inherit;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+html {
+  overflow-y: scroll;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button,
+input {
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+body {
+  font-family: "futura-pt", verdana, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+#start-menu-wrapper {
+  background-image: url(../../img/black-70.png);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 5000;
+}
+#start-menu-wrapper .menu {
+  position: absolute;
+  width: 270px;
+  left: 50%;
+  top: 8%;
+  margin: 0 0 0 -135px;
+  background-color: #000;
+  border-radius: 30px;
+  padding: 60px 45px 50px 45px;
+  box-shadow: 0 0 1000px #7ae;
+}
+#start-menu-wrapper .menu .logo {
+  color: #fff;
+  font-size: 64px;
+  font-weight: 300;
+  text-align: center;
+  margin: 10px 0 30px 0;
+  letter-spacing: 0.011em;
+}
+#start-menu-wrapper .menu .mute-btn {
+  opacity: 0.6;
+  background-image: url(../../img/sprite.png);
+  background-position: -63px -10px;
+  width: 27px;
+  height: 21px;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 12px;
+}
+#start-menu-wrapper .menu .mute-btn-music.muted .mute-btn,
+#start-menu-wrapper .menu .mute-btn-sfx.muted .mute-btn {
+  width: 14px;
+  margin-right: 13px;
+}
+#start-menu-wrapper .menu ul {
+  width: 100%;
+}
+#start-menu-wrapper .menu ul li {
+  color: #ccf;
+  text-align: center;
+  padding: 20px 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 34px;
+  cursor: pointer;
+  opacity: 0.55;
+}
+#start-menu-wrapper .menu ul li:first-child {
+  opacity: 1;
+}
+#start-menu-wrapper .menu ul li:hover {
+  opacity: 1;
+}
+#start-menu-wrapper .menu .chrome-message {
+  padding-top: 14px;
+  font-size: 16px;
+  color: #ddd;
+  text-align: center;
+}
+#skydock-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../../img/background-body.png);
+}
+#skydock {
+  position: absolute;
+  background-color: #000;
+  background-image: url(../../img/background-stars.jpg);
+  width: 8000px;
+  height: 8000px;
+  box-shadow: 0 0 500px #000;
+}
+#skydock #galaxy {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../img/background-clouds.jpg);
+  opacity: 0.575;
+}
+#crosshair {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  margin-left: -38px;
+  margin-top: -38px;
+  visibility: hidden;
+  z-index: 500;
+  background-image: url(../../img/crosshair.png);
+}
+.planet {
+  position: absolute;
+  border-radius: 200px;
+  background-size: contain;
+  box-shadow: 0px 0px 320px #999;
+  /* colors */
+  /* sizes */
+  /* personalities */
+}
+.planet.blue {
+  background-image: url(../../img/texture-blue.jpg);
+}
+.planet.blue-2 {
+  background-image: url(../../img/texture-blue-2.jpg);
+}
+.planet.green {
+  background-image: url(../../img/texture-green.jpg);
+}
+.planet.red {
+  background-image: url(../../img/texture-red.jpg);
+}
+.planet.red-2 {
+  background-image: url(../../img/texture-red-2.jpg);
+}
+.planet.sand {
+  background-image: url(../../img/texture-sand.jpg);
+}
+.planet.purple {
+  background-image: url(../../img/texture-purple.jpg);
+}
+.planet.yellow {
+  background-image: url(../../img/texture-yellow.jpg);
+}
+.planet.gray {
+  background-image: url(../../img/texture-gray.jpg);
+}
+.planet.orange {
+  background-image: url(../../img/texture-orange.jpg);
+}
+.planet.earth {
+  background-image: url(../../img/texture-earth.jpg);
+}
+.planet.waldo {
+  background-image: url(../../img/texture-waldo.jpg);
+}
+.planet.deathstar {
+  background-image: url(../../img/texture-deathstar.jpg);
+}
+.planet.tiny {
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  margin-top: -23px;
+}
+.planet.small {
+  width: 120px;
+  height: 120px;
+  margin-left: -63px;
+  margin-top: -63px;
+}
+.planet.medium {
+  width: 160px;
+  height: 160px;
+  margin-left: -83px;
+  margin-top: -83px;
+}
+.planet.large {
+  width: 200px;
+  height: 200px;
+  margin-left: -103px;
+  margin-top: -103px;
+}
+.planet.grumpy .planet-personality {
+  background-image: url(../../img/personality-grumpy.png);
+}
+.planet.jason .planet-personality {
+  background-image: url(../../img/personality-jason.png);
+  visibility: visible;
+}
+.planet.stephanie .planet-personality {
+  background-image: url(../../img/personality-stephanie.png);
+  visibility: visible;
+}
+.planet.happy .planet-personality {
+  background-image: url(../../img/personality-happy.png);
+}
+.planet.sad .planet-personality {
+  background-image: url(../../img/personality-sad.png);
+}
+.planet.evil .planet-personality {
+  background-image: url(../../img/personality-evil.png);
+}
+.planet.worried .planet-personality {
+  background-image: url(../../img/personality-worried.png);
+}
+.planet.scared .planet-personality {
+  background-image: url(../../img/personality-scared.png);
+}
+.planet.scared-left .planet-personality {
+  background-image: url(../../img/personality-scared-left.png);
+}
+.planet.hopeful .planet-personality {
+  background-image: url(../../img/personality-hopeful.png);
+}
+.planet.bully .planet-personality {
+  background-image: url(../../img/personality-bully.png);
+}
+.planet.dead .planet-personality {
+  background-image: url(../../img/personality-dead.png);
+}
+.planet.determined .planet-personality {
+  background-image: url(../../img/personality-determined.png);
+}
+.planet.stupid .planet-personality {
+  background-image: url(../../img/personality-stupid.png);
+}
+.planet-personality {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  background-size: cover;
+  visibility: hidden;
+}
+.planet-greeting {
+  visibility: hidden;
+  background-color: #ddd;
+  padding: 30px 30px 60px 30px;
+  width: 300px;
+  border-radius: 30px;
+  position: absolute;
+  margin-left: 30px;
+  left: 100%;
+  top: 30px;
+  letter-spacing: 0.0375em;
+  z-index: 50;
+}
+.planet-greeting.hide-instructions {
+  padding-bottom: 30px;
+}
+.planet-greeting.hide-instructions .message-instructions {
+  display: none;
+}
+.planet-greeting .message {
+  display: none;
+}
+.planet-greeting .message.active {
+  display: block;
+}
+.planet-greeting .message-instructions {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  font-size: 14px;
+  color: #777;
+}
+.planet-name {
+  position: absolute;
+  width: 200px;
+  margin: 20px 0 0 -100px;
+  left: 50%;
+  top: 100%;
+  color: #ddf;
+  font-size: 14px;
+  opacity: 0.8;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.325em;
+}
+#ship {
+  width: 78px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -40px;
+  margin-left: -39px;
+  background-image: url(../../img/ship.png);
+}
+#hud {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background-color: #000;
+  border-radius: 15px;
+  padding: 30px 100px 30px 30px;
+  opacity: 0.7;
+}
+#hud .planet-counter {
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: inline-block;
+}
+#hud .options-btn {
+  height: 40px;
+  width: 40px;
+  background-image: url(../../img/sprite.png);
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  bottom: 22px;
+  opacity: 0.7;
+}
+#hud .options-btn:hover {
+  opacity: 1;
+}
+#gold-star {
+  background-image: url(../../img/gold-star.png);
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin: -250px 0 0 -250px;
+  z-index: 2500;
+  background-size: contain;
+  visibility: hidden;
+  display: none;
+}
+#gold-star.flipped {
+  -ms-transform: rotateY(180deg);
+  /* IE 9 */
+  -webkit-transform: rotateY(180deg);
+  /* Chrome, Safari, Opera */
+  transform: rotateY(180deg);
+}
+#credits {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  background-image: url(../../img/black-70.png);
+  border: 2px solid #eee;
+  box-sizing: border-box;
+  padding: 60px;
+  color: #fff;
+  font-size: 30px;
+  z-index: 7500;
+  overflow: auto;
+  text-align: center;
+  visibility: hidden;
+}
+#credits .close {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  color: #fff;
+  font-size: 50px;
+  cursor: pointer;
+}
+a {
+  color: #fff;
+}
