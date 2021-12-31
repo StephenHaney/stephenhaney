@@ -24,6 +24,6 @@ Why do we prefer centered sprites by default? You may think it simpler to positi
 
 Still, there are some cases when you will want to change an anchor point. For instance, if you are drawing a rocket ship, you may want the ship to rotate around the front nose of its cone, rather than its center.
 
-### Questions or ideas:
+## Questions or ideas:
 
 <a href="https://github.com/StephenHaney/stephenhaney/issues/2">Discuss this post on GitHub</a>

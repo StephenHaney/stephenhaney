@@ -27,6 +27,6 @@ You can combine these two APIs as follows to use styled-components inside your I
 
 This works perfectly with react v16.4.1, styled-components v3.3.3, and react-frame-component v4.0.0.
 
-### Questions or ideas:
+## Questions or ideas:
 
 <a href="https://github.com/StephenHaney/stephenhaney/issues/1">Discuss this post on GitHub</a>

@@ -78,6 +78,6 @@ zeus.meow();
 
 Try it out and let me know how it goes: <a href="https://github.com/StephenHaney/Swift-Custom-Events" title="Swift Custom Events on GitHub">Swift Custom Events on GitHub</a>
 
-### Questions or ideas:
+## Questions or ideas:
 
 <a href="https://github.com/StephenHaney/stephenhaney/issues/4">Discuss this post on GitHub</a>

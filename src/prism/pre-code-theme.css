@@ -345,7 +345,7 @@ article pre {
   margin-bottom: var(--space4);
   overflow-x: auto;
   background: var(--slate2);
-  background: linear-gradient(-25deg, var(--slate2), var(--slate3));
+  background: linear-gradient(-25deg, var(--slate1), var(--slate3));
 
   margin-left: calc(-1 * var(--space2));
   margin-right: calc(-1 * var(--space2));
@@ -369,7 +369,7 @@ article pre {
   -ms-hyphens: none;
   hyphens: none;
 
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 @media only screen and (min-width: 600px) {
@@ -381,13 +381,18 @@ article pre {
     padding-left: var(--space6);
     padding-right: var(--space6);
 
-    padding-top: var(--space3);
-    padding-bottom: var(--space3);
+    padding-top: var(--space5);
+    padding-bottom: var(--space5);
     margin-top: var(--space6);
     margin-bottom: var(--space6);
 
-    font-size: 1em;
+    font-size: 0.9em;
   }
+}
+
+pre code {
+  font-family: -ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
 }
 
 article pre::selection,

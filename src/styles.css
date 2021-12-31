@@ -136,8 +136,8 @@ th {
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: SOEHNE_BUCH, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   font-size: 18px;
   line-height: 28px;
   color: var(--slate12);
@@ -155,7 +155,11 @@ body {
 }
 
 ::selection {
-  background: var(--cyan6);
+  background: var(--blue6);
+}
+
+main {
+  padding-bottom: var(--space8);
 }
 
 /** --- Header --- */
@@ -186,7 +190,7 @@ body {
 }
 
 .site-header a {
-  color: var(--cyan12);
+  color: var(--blue12);
   padding: var(--space0) var(--space3);
   text-decoration: none;
   display: flex;
@@ -207,12 +211,12 @@ body {
 }
 
 .site-header a.logo {
-  font-weight: 600;
   font-size: 0.9em;
   padding-top: var(--space2);
   padding-bottom: var(--space2);
   border-radius: 5px;
   position: relative;
+  letter-spacing: 0.5px;
 }
 @media only screen and (min-width: 600px) {
   .site-header a.logo {
@@ -238,7 +242,7 @@ body {
   border-radius: 4px;
   width: 42px;
   height: 42px;
-  color: var(--cyan12);
+  color: var(--blue12);
   margin-left: var(--space3);
 }
 @media only screen and (min-width: 600px) {
@@ -249,8 +253,8 @@ body {
 
 @media (hover: hover) {
   .dark-mode-switcher:hover {
-    background-color: var(--cyan12);
-    color: var(--cyan1);
+    background-color: var(--blue12);
+    color: var(--blue1);
   }
 }
 
@@ -274,7 +278,6 @@ body {
 article {
   max-width: var(--content-max-width);
   margin: auto;
-  padding-bottom: var(--space8);
 }
 
 .article-header {
@@ -286,6 +289,7 @@ article {
 }
 @media only screen and (min-width: 600px) {
   .article-header {
+    padding-top: var(--space3);
     margin-top: var(--space6);
     margin-bottom: 40px;
   }
@@ -294,15 +298,14 @@ article {
 /** --- Headlines --- */
 
 h1 {
-  max-width: 660px;
+  max-width: 690px;
   font-size: 1.9em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  font-weight: 700;
   letter-spacing: -0.5px;
   line-height: 1.05;
-  font-weight: 700;
-  color: var(--cyan12);
-
-  padding-top: var(--space3);
-  padding-bottom: var(--space1);
+  color: var(--blue12);
   border-radius: 6px 6px 6px 0;
 
   margin-left: -1px;
@@ -316,30 +319,30 @@ h1 {
 }
 
 .by-line {
+  margin-top: var(--space1);
+  margin-left: 0.5px;
   font-size: 0.8em;
   color: var(--slate11);
-  border-radius: 0 0 6px 6px;
-  padding-left: 8px;
+  letter-spacing: 1px;
 }
 
-article h2 {
+h2 {
   font-size: 1.5em;
-  font-weight: 600;
-  color: var(--cyan12);
+  color: var(--blue12);
   margin-top: var(--space6);
   margin-bottom: var(--space3);
   letter-spacing: -0.3px;
   line-height: 1.05;
 }
 @media only screen and (min-width: 600px) {
-  article h2 {
-    font-size: 1.7em;
+  h2 {
+    font-size: 1.6em;
     margin-top: var(--space7);
     margin-bottom: var(--space5);
   }
 }
 
-article h3 {
+h3 {
   font-size: 1.1em;
   color: var(--slate12);
   margin-top: var(--space4);
@@ -348,39 +351,39 @@ article h3 {
   font-weight: 500;
 }
 @media only screen and (min-width: 600px) {
-  article h3 {
-    font-size: 1.23em;
+  h3 {
+    font-size: 1.25em;
   }
 }
 
-article h2 + p,
-article h3 + p,
-article p:first-of-type {
+h2 + p,
+h3 + p,
+p:first-of-type {
   margin-top: 0;
 }
 
 /** --- Link --- */
 
-article a {
-  color: var(--slate12);
+p a {
+  color: var(--blue12);
   text-decoration: none;
-  padding-top: 2px;
   padding-bottom: 2px;
-  box-shadow: 0px 1px 0px 0px var(--cyan8);
-  /* border-bottom: 1px solid var(--cyan8); */
+  box-shadow: 0px 1px 0px 0px var(--blue8);
+  /* border-bottom: 1px solid var(--blue8); */
   /* border-top: 1px solid transparent; */
 }
 
 @media (hover: hover) {
-  article a:hover {
+  p a:hover {
     color: var(--slate1);
-    background: linear-gradient(70deg, var(--cyan10), var(--cyan9));
+    background: linear-gradient(70deg, var(--blue11), var(--blue10));
+    box-shadow: none;
   }
 }
 
 /** --- Paragraph --- */
 
-article p {
+p {
   margin-top: var(--space4);
   margin-bottom: var(--space4);
   letter-spacing: 0.2px;
@@ -389,9 +392,9 @@ article p {
 }
 
 @media only screen and (min-width: 600px) {
-  article p {
-    margin-top: var(--space5);
-    margin-bottom: var(--space5);
+  p {
+    margin-top: var(--space4);
+    margin-bottom: var(--space4);
   }
 }
 
@@ -404,18 +407,18 @@ article img {
   margin-bottom: var(--space6);
 }
 
-article p code {
-  font-family: -ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+p code {
+  font-family: SOEHNE_MONO_BUCH, -ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
     'Liberation Mono', monospace;
   font-size: 0.9em;
   padding-left: 4px;
   padding-right: 4px;
-  padding-top: 3px;
+  padding-top: 2px;
   padding-bottom: 2px;
   border: 1px solid var(--slate6);
   border-radius: 4px;
-  background-color: var(--slate1);
-  color: var(--slate12);
+  background-color: var(--slate2);
+  color: var(--blue11);
 }
 
 /** --- Footer --- */

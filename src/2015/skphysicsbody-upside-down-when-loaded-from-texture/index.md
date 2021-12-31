@@ -25,6 +25,6 @@ This gives a passable result. It's too bad that the texture based physics body s
 
 <img src="final-body.png" alt="Using a CGPath to create a reasonably accurate physics body" width="365" height="257" />
 
-### Questions or ideas:
+## Questions or ideas:
 
 <a href="https://github.com/StephenHaney/stephenhaney/issues/3">Discuss this post on GitHub</a>

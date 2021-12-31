@@ -9,7 +9,7 @@ What do you do if you need plaintext from a `contenteditable` HTML element with 
 
 It should be simple — just use `element.innerText`
 
-But it turns out that there are bugs with `contenteditable` and `innerText` linebreaks. For me, Chrome reports too many linebreaks. And I’m finding reports of FireFox doing the same
+But it turns out that there are bugs with `contenteditable` and `innerText` linebreaks. For me, Chrome reports too many linebreaks. And I’m finding reports of FireFox doing the same.
 
 ```javascript
 // What my content editable looks like, a single line between
@@ -41,7 +41,7 @@ There's a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Edita
 What do we do if we need a plaintext value but also need perfect
 linebreaks?
 
-Here is a snippet I'm using — it's working but I haven't tested use cases beyond my own. So . . . apply it with your own critical thinking.
+Here is a snippet I'm using — it's working but I haven't tested use cases beyond my own. So apply it with your own critical thinking.
 
 ```javascript
 let newValue = '';
@@ -88,6 +88,6 @@ During testing, I've another found issue in Safari where a single unbreakable wo
 
 I hope this experience helps someone else who stumbles upon this problem.
 
-### Questions or ideas:
+## Questions or ideas:
 
 <a href="https://github.com/StephenHaney/stephenhaney/issues/6">Discuss this post on GitHub</a>

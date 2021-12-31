@@ -7,117 +7,137 @@
     <!-- Site head -->
     <import src="common/__site-header.html" />
 
+    <style>
+      section {
+        max-width: var(--content-max-width);
+        margin: auto;
+      }
+
+      .article-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space3);
+        margin-top: var(--space3);
+        margin-bottom: var(--space4);
+        margin-left: calc(-1 * var(--space4));
+        margin-right: calc(-1 * var(--space4));
+        align-items: stretch;
+      }
+
+      .article-card {
+        display: block;
+        padding: var(--space4) var(--space2);
+        text-decoration: none;
+        color: var(--blue12);
+        transition: color 0.1s ease-out, transform 0.1s ease-out;
+      }
+
+      .article-card:hover {
+        transform: translateY(-4px);
+      }
+      .article-card:hover h3 {
+        color: var(--blue11);
+      }
+
+      .article-card h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 1.2em;
+        border-left: 1px solid var(--blue11);
+        padding-left: var(--space3);
+      }
+
+      .article-card p {
+        border-left: 1px solid var(--slate8);
+        padding-left: var(--space3);
+        margin-top: 0;
+        padding-top: var(--space3);
+      }
+    </style>
+
     <main>
-      <article>
+      <section>
         <div
           style="
             display: flex;
             align-items: center;
-            gap: var(--space5);
-            margin-top: var(--space6);
+            gap: var(--space6);
+            margin-top: var(--space7);
+            margin-bottom: var(--space7);
           "
         >
-          <img
-            src="assets/stephen-haney-backpacking-sierras.jpg"
-            alt="Stephen Haney backpacking in the Sierras. A mountain lake is in the background."
-            width="36%"
-            style="margin: 0"
-          />
-
-          <div>
+          <div style="width: 50%">
             <h1>Hey, I'm Stephen</h1>
-
-            <p style="margin-top: var(--space4)">
-              I co-founded Modulz with the goal to bridge the gap between designers and
-              developers. Along the way we've created Radix, a11y first React components,
-              and Stitches, a styling library with excellent DX. In 2017
+            <p style="margin-top: 30px; text-align: left">
+              I am a programmer, musician, hiker, and reader.
             </p>
             <p>
-              I published the second edition of my book,
+              I cofounded <a href="https://modulz.app">Modulz</a> and wrote a
               <a
-                href="https://www.amazon.com/Swift-3-Game-Development-Second-ebook/dp/B01M138PTW"
-              >
-                Swift 3 Game Development</a
+                href="https://www.amazon.com/Game-Development-Swift-Stephen-Haney-ebook/dp/B00YSILB6C"
+                >book about making games</a
               >.
             </p>
+            <p style="margin-bottom: 0; text-align: left">
+              Want to chat?
+              <a href="https://twitter.com/sdothaney" target="_blank">
+                Get in touch on Twitter
+              </a>
+            </p>
+          </div>
+          <div style="width: 50%">
+            <img
+              src="assets/stephen-haney-backpacking-sierras.jpg"
+              alt="Stephen Haney backpacking in the Sierras. A mountain lake is in the background."
+              width="100%"
+              style="margin: 0"
+            />
           </div>
         </div>
+      </section>
 
-        <div style="max-width: 600px; margin: auto">
-          <h3>2018</h3>
-          <p>
-            I co-founded Modulz with the goal to bridge the gap between designers and
-            developers. Along the way we've created Radix, a11y first React components,
-            and Stitches, a styling library with excellent DX.
-          </p>
+      <section>
+        <h2>Writing</h2>
 
-          <h3>2017</h3>
-          <p>
-            I published the second edition of my book,
-            <a
-              href="https://www.amazon.com/Swift-3-Game-Development-Second-ebook/dp/B01M138PTW"
-            >
-              Swift 3 Game Development</a
-            >.
-          </p>
-
-          <h3>2015</h3>
-          <p>
-            I worked as an Engineering Manager at Newell Brands, launching ecommerce sites
-            and eventually moving to NYC to lead the front-end engineering efforts for 300
-            brands. I wrote and published my first book,
-            <a
-              href="https://www.amazon.com/Game-Development-Swift-Stephen-Haney-ebook/dp/B00YSILB6C"
-              >Game Development with Swift</a
-            >.
-          </p>
-
-          <h3>2014</h3>
-          <p>
-            In 2014 I ran engineering for a digital agency in the Bay Area, producing high
-            profile sites for companies like Levi's, Dockers, Belk, and Genentech.
-          </p>
-
-          <h2>Writing</h2>
-          <h3>2020</h3>
-          <a href="2020/get-contenteditable-plaintext-with-correct-linebreaks">
-            Get contenteditable plaintext with correct linebreaks
+        <div class="article-grid">
+          <a
+            class="article-card"
+            href="2020/get-contenteditable-plaintext-with-correct-linebreaks"
+          >
+            <h3>Get contenteditable plaintext with correct linebreaks</h3>
+            <p>Browser bugs lead to incorrect results from the .innerText API</p>
+          </a>
+          <a class="article-card" href="2018/react-styled-components-in-iframes/">
+            <h3>React Styled Components in IFrames</h3>
+            <p>How to use Styled Components inside nested IFrames</p>
+          </a>
+          <a class="article-card" href="2015/anchorpoint-skspritenode-spritekit-swift">
+            <h3>SKSpriteNodes anchorPoint in Swift and SpriteKit</h3>
+            <p>A how-to guide on using anchorPoint in SpriteKit</p>
           </a>
 
-          <h3>2018</h3>
-          <a href="2018/react-styled-components-in-iframes">
-            React Styled Components in IFrames
+          <a
+            class="article-card"
+            href="2015/skphysicsbody-upside-down-when-loaded-from-texture/"
+          >
+            <h3>Upside Down SKPhysicsBody when Loaded From Texture</h3>
+            <p>Working around a bug in SpriteKit's physics engine</p>
           </a>
 
-          <h3>2015</h3>
-          <ul>
-            <li>
-              <a href="2015/anchorpoint-skspritenode-spritekit-swift">
-                SKSpriteNodes anchorPoint in Swift and SpriteKit
-              </a>
-            </li>
+          <a
+            class="article-card"
+            href="2015/event-triggers-and-event-listeners-in-swift/"
+          >
+            <h3>Event Triggers and Event Listeners in Swift, Updated Swift 6.2</h3>
+            <p>Introducing a library for event based patterns in Swift</p>
+          </a>
 
-            <li>
-              <a href="2015/skphysicsbody-upside-down-when-loaded-from-texture/">
-                Upside Down SKPhysicsBody when Loaded From Texture
-              </a>
-            </li>
-
-            <li>
-              <a href="2015/event-triggers-and-event-listeners-in-swift/">
-                Event Triggers and Event Listeners in Swift, Updated Swift 6.2
-              </a>
-            </li>
-          </ul>
-
-          <h3>2014</h3>
-          <p>
-            <a href="2014/camera-shake-with-spritekit-in-swift/">
-              Camera Shake with SpriteKit in Swift
-            </a>
-          </p>
+          <a class="article-card" href="2014/camera-shake-with-spritekit-in-swift/">
+            <h3>Camera Shake with SpriteKit in Swift</h3>
+            <p>Creating a juicy camera shake effect in SpriteKit</p>
+          </a>
         </div>
-      </article>
+      </section>
     </main>
 
     <import src="common/__theme-switcher.html" />
