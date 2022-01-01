@@ -51,7 +51,28 @@
         border-left: 1px solid var(--slate8);
         padding-left: var(--space3);
         margin-top: 0;
+        margin-bottom: 0;
         padding-top: var(--space3);
+      }
+
+      .article-badge {
+        background-color: var(--blue3);
+        border-radius: 5px;
+        padding: 4px 8px;
+        font-size: 0.8em;
+      }
+
+      .article-date {
+        background-color: transparent;
+        color: var(--slate11);
+        padding-left: 0;
+      }
+
+      .article-badge-bar {
+        display: block;
+        padding-top: 8px;
+        border-left: 1px solid var(--slate8);
+        padding-left: var(--space3);
       }
     </style>
 
@@ -97,7 +118,7 @@
       </section>
 
       <section>
-        <h2>Writing</h2>
+        <h2>Articles</h2>
 
         <div class="article-grid">
           <a
@@ -106,14 +127,27 @@
           >
             <h3>Get contenteditable plaintext with correct linebreaks</h3>
             <p>Browser bugs lead to incorrect results from the .innerText API</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2020</span>
+              <span class="article-badge">Browsers</span>
+            </div>
           </a>
           <a class="article-card" href="2018/react-styled-components-in-iframes/">
             <h3>React Styled Components in IFrames</h3>
             <p>How to use Styled Components inside nested IFrames</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2018</span>
+              <span class="article-badge">React</span>
+            </div>
           </a>
           <a class="article-card" href="2015/anchorpoint-skspritenode-spritekit-swift">
             <h3>SKSpriteNodes anchorPoint in Swift and SpriteKit</h3>
             <p>A how-to guide on using anchorPoint in SpriteKit</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2015</span>
+              <span class="article-badge">Swift</span>
+              <span class="article-badge">SpriteKit</span>
+            </div>
           </a>
 
           <a
@@ -122,6 +156,11 @@
           >
             <h3>Upside Down SKPhysicsBody when Loaded From Texture</h3>
             <p>Working around a bug in SpriteKit's physics engine</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2015</span>
+              <span class="article-badge">Swift</span>
+              <span class="article-badge">SpriteKit</span>
+            </div>
           </a>
 
           <a
@@ -130,11 +169,20 @@
           >
             <h3>Event Triggers and Event Listeners in Swift, Updated Swift 6.2</h3>
             <p>Introducing a library for event based patterns in Swift</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2015</span>
+              <span class="article-badge">Swift</span>
+            </div>
           </a>
 
           <a class="article-card" href="2014/camera-shake-with-spritekit-in-swift/">
             <h3>Camera Shake with SpriteKit in Swift</h3>
             <p>Creating a juicy camera shake effect in SpriteKit</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2014</span>
+              <span class="article-badge">Swift</span>
+              <span class="article-badge">SpriteKit</span>
+            </div>
           </a>
         </div>
       </section>
