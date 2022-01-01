@@ -33,7 +33,7 @@
 
       .hero-photo img {
         border-radius: 2px;
-        transform: rotate(2deg) translate(-3px, 6px);
+        transform: rotate(1deg) translate(-3px, 6px);
         box-shadow: 0px 0px 0px 8px var(--blue3);
       }
 
@@ -46,6 +46,36 @@
         .hero-text {
           width: 50%;
         }
+      }
+
+      .hero p {
+        position: relative;
+      }
+
+      .date-thing::before {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 40px;
+        left: -50px;
+        color: var(--slate7);
+        transform-origin: top left;
+        transform: rotate(-90deg);
+      }
+
+      .date-2018::before {
+        content: '2018';
+        top: 92px;
+      }
+
+      .date-2015::before {
+        content: "'15";
+        top: 56px;
+      }
+
+      .date-2014::before {
+        content: "'14";
+        top: 56px;
       }
 
       .article-grid {
@@ -122,40 +152,37 @@
       <section>
         <div class="hero">
           <div class="hero-text">
-            <h1>Hey, I'm Stephen</h1>
+            <h1 style="margin-bottom: var(--space5)">Hey, I'm Stephen</h1>
 
-            <p style="margin-top: 30px; text-align: left">
-              In 2018 I co-founded <a href="https://modulz.app">Modulz</a> to bridge the
-              gap between designers and developers. Along the way we've created<br />
+            <p class="date-thing date-2018">
+              I co-founded <a href="https://modulz.app">Modulz</a> to bridge the gap
+              between designers and developers. Along the way we created
               <a href="https://www.radix-ui.com/">Radix</a>, accessibility first React
-              components, and<br /><a href="https://stitches.dev/">Stitches</a>, a styling
+              components, and <a href="https://stitches.dev/">Stitches</a>, a styling
               library with excellent DX.
             </p>
 
-            <p>
-              In 2015 I began work as an Engineering Manager at Marmot and Newell Brands,
-              launching ecommerce sites and eventually moving to NYC to lead the front-end
-              engineering efforts.
+            <hr size="1" width="20%" style="opacity: 0.3" />
+
+            <p class="date-thing date-2015">
+              I was as an Engineering Manager at Marmot and Newell Brands, launching
+              ecommerce sites and eventually moving to NYC to lead the front-end
+              engineering efforts across the corporation.
             </p>
 
             <p>
-              In 2015 I also wrote my first book:<br />
+              I also wrote my first book:<br />
               <a
                 href="https://www.amazon.com/Game-Development-Swift-Stephen-Haney-ebook/dp/B00YSILB6C"
                 >Game Development with Swift</a
               >
             </p>
 
-            <p>
-              In 2014 I ran engineering for a digital agency in California, producing
-              high-profile sites for companies like Levi's, Dockers, Belk, and Genentech.
-            </p>
+            <hr size="1" width="20%" style="opacity: 0.3" />
 
-            <p style="margin-bottom: 0; text-align: left">
-              Want to chat?
-              <a href="https://twitter.com/sdothaney" target="_blank">
-                Get in touch on Twitter
-              </a>
+            <p class="date-thing date-2014">
+              I lead engineering for a digital agency in California, producing
+              high-profile sites for companies like Levi's, Dockers, Belk, and Genentech.
             </p>
           </div>
           <div class="hero-photo">
@@ -170,7 +197,7 @@
       </section>
 
       <section>
-        <h2>Adventures in Technology</h2>
+        <h2>Technical Posts</h2>
 
         <div class="article-grid">
           <a
@@ -190,6 +217,7 @@
             <div class="article-badge-bar">
               <span class="article-badge article-date">2018</span>
               <span class="article-badge">React</span>
+              <span class="article-badge">CSS-in-JS</span>
             </div>
           </a>
           <a class="article-card" href="2015/anchorpoint-skspritenode-spritekit-swift">
