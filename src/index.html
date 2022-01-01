@@ -13,15 +13,49 @@
         margin: auto;
       }
 
+      .hero {
+        margin-top: var(--space5);
+      }
+      @media only screen and (min-width: 600px) {
+        .hero {
+          margin-top: 0;
+          display: flex;
+          align-items: center;
+          gap: var(--space6);
+          margin-top: var(--space7);
+          margin-bottom: var(--space7);
+        }
+      }
+
+      .hero-photo {
+        display: none;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .hero-photo {
+          display: block;
+          width: 50%;
+        }
+
+        .hero-text {
+          width: 50%;
+        }
+      }
+
       .article-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space3);
         margin-top: var(--space3);
         margin-bottom: var(--space4);
         margin-left: calc(-1 * var(--space4));
         margin-right: calc(-1 * var(--space4));
-        align-items: stretch;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .article-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space3);
+          align-items: stretch;
+        }
       }
 
       .article-card {
@@ -32,11 +66,13 @@
         transition: color 0.1s ease-out, transform 0.1s ease-out;
       }
 
-      .article-card:hover {
-        transform: translateY(-4px);
-      }
-      .article-card:hover h3 {
-        color: var(--blue11);
+      @media (hover: hover) {
+        .article-card:hover {
+          transform: translateY(-4px);
+        }
+        .article-card:hover h3 {
+          color: var(--blue11);
+        }
       }
 
       .article-card h3 {
@@ -78,16 +114,8 @@
 
     <main>
       <section>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: var(--space6);
-            margin-top: var(--space7);
-            margin-bottom: var(--space7);
-          "
-        >
-          <div style="width: 50%">
+        <div class="hero">
+          <div class="hero-text">
             <h1>Hey, I'm Stephen</h1>
             <p style="margin-top: 30px; text-align: left">
               I am a programmer, musician, hiker, and reader.
@@ -106,7 +134,7 @@
               </a>
             </p>
           </div>
-          <div style="width: 50%">
+          <div class="hero-photo">
             <img
               src="assets/stephen-haney-backpacking-sierras.jpg"
               alt="Stephen Haney backpacking in the Sierras. A mountain lake is in the background."

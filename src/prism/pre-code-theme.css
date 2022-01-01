@@ -352,6 +352,9 @@ article pre {
   padding-left: var(--space2);
   padding-right: var(--space2);
 
+  padding-top: var(--space4);
+  padding-bottom: var(--space4);
+
   text-align: left;
   white-space: pre;
   word-spacing: normal;
