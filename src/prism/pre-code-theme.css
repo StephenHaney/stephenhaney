@@ -347,8 +347,6 @@ article pre {
   background: var(--slate2);
   background: linear-gradient(-25deg, var(--slate1), var(--slate3));
 
-  margin-left: calc(-1 * var(--space2));
-  margin-right: calc(-1 * var(--space2));
   padding-left: var(--space2);
   padding-right: var(--space2);
 

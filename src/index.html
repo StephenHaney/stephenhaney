@@ -81,8 +81,6 @@
       .article-grid {
         margin-top: var(--space4);
         margin-bottom: var(--space4);
-        margin-left: calc(-1 * var(--space4));
-        margin-right: calc(-1 * var(--space4));
       }
 
       @media only screen and (min-width: 600px) {
@@ -91,15 +89,26 @@
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space3);
           align-items: stretch;
+
+          margin-left: calc(-1 * var(--space4));
+          margin-right: calc(-1 * var(--space4));
         }
       }
 
       .article-card {
         display: block;
-        padding: var(--space4) var(--space2);
+        padding-right: var(--space2);
+        padding-top: var(--space4);
+        padding-bottom: var(--space4);
         text-decoration: none;
         color: var(--blue12);
         transition: color 0.1s ease-out, transform 0.1s ease-out;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .article-card {
+          padding-left: var(--space2);
+        }
       }
 
       @media (hover: hover) {
