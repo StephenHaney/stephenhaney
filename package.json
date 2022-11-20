@@ -5,7 +5,7 @@
   "author": "Stephen Haney",
   "description": "",
   "scripts": {
-    "start": "./scripts/build_script --watch",
+    "start": "./scripts/build_script_arm --watch",
     "start-dev-build": "concurrently -kill-others-on-fail \"cargo run --manifest-path scripts/Cargo.toml -- --watch\" \"sleep 1 && cd dist && live-server --no-css-inject\"",
     "build-dev-build": "cargo run --manifest-path scripts/Cargo.toml",
     "build": "./scripts/build_script_x86_linux"
