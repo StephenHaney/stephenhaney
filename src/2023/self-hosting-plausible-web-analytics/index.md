@@ -27,13 +27,28 @@ I usually use <a href="https://fly.io/" target="_blank">Fly.io</a> but in this c
 
 The total time it took me to set things up was about 2 hours. And now I'm locked into $6 / month analytics for all of my side projects without having to worry about the price increasing if a free project gets some attention.
 
+The basic steps are:
+
+```
+The basic steps are:
+1. Get a VM
+2. SSH in and clone Plausible
+3. Set up 2 config files
+4. Run `docker compose up`
+5. Install nginx + 1 config file
+6. Run certbot to support https
+7. Register an Admin user and disable registrations
+```
+
 ## Other considerations
 
 1. I chose a 1GB memory instance, which is honestly probably pushing it. We'll see how this works out long term. Right now it's sitting at about 50% memory usage at 600 uniques per day.
 
 2. When I tried to use the MaxMind option for city level geolocation, my server would go out of memory. I scaled it to 2GB to test and things worked fine. I decided to go back to 1GB of memory and live without city level analytics.
 
-3. I named my subdomain "plsbl.zoodrop.io" to avoid ad blockers (a subdomain like "analytics" might get blocked)
+3. I named my subdomain "plsbl.my-domain.com" to avoid ad blockers (a subdomain like "analytics" might get blocked)
+
+4. Make sure to disable registrations on your Plausible instance once you have created your account!
 
 ## Resources
 
