@@ -27,17 +27,17 @@ I usually use <a href="https://fly.io/" target="_blank">Fly.io</a> but in this c
 
 The total time it took me to set things up was about 2 hours. And now I'm locked into $6 / month analytics for all of my side projects without having to worry about the price increasing if a free project gets some attention.
 
-The basic steps are:
+As a preview to the tutorial linked above, the basic steps are:
 
 ```
-The basic steps are:
 1. Get a VM
-2. SSH in and clone Plausible
-3. Set up 2 config files
-4. Run `docker compose up`
-5. Install nginx + 1 config file
-6. Run certbot to support https
-7. Register an Admin user and disable registrations
+2. CNAME a subdomain to your VM IP in DNS
+3. SSH in and clone Plausible
+4. Set up 2 config files
+5. Run `docker compose up`
+6. Install nginx + 1 config file
+7. Run certbot to support https
+8. Register an Admin user and disable registrations
 ```
 
 ## Other considerations
