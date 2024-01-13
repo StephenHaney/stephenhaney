@@ -42,7 +42,7 @@ As a preview to the tutorial linked above, the basic steps are:
 
 ## Other considerations
 
-1. I chose a 1GB memory instance, which is honestly probably pushing it. We'll see how this works out long term. Right now it's sitting at about 50% memory usage at 600 uniques per day.
+1. I chose a 1GB memory instance, which is honestly probably pushing it. We'll see how this works out long term. Right now it's sitting at about 50% memory usage at 600 uniques per day. (2024-01-13 Update: ZooDrop.io went live on Poki and is receiving about 10k uniques per day. CPU is sitting at ~15% and memory is at ~90% on the 1GB instance. No crashes or hiccups so far)
 
 2. When I tried to use the MaxMind option for city level geolocation, my server would go out of memory. I scaled it to 2GB to test and things worked fine. I decided to go back to 1GB of memory and live without city level analytics.
 
