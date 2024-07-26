@@ -1,5 +1,9 @@
 # Hey, I'm Stephen
 
+I'm a founder, engineer, designer, and game developer in Southern California.
+
+In 2022 WorkOS acquired my startup Modulz. At WorkOS I led product engineering from early PMF into high-growth scale-up and launched [AuthKit](https://www.authkit.com/), the world's best login.
+
 In 2018 I co-founded [Modulz](https://modulz.app/) with the goal to bridge the gap between designers and developers. Along the way we've created [Radix](https://www.radix-ui.com/), a11y first React components, and [Stitches](https://stitches.dev/), a styling library with excellent DX.
 
 In 2015 I worked as an Engineering Manager at Newell Brands, launching ecommerce sites and eventually moving to NYC to lead the front-end engineering efforts for 300 brands.
