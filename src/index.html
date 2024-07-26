@@ -32,9 +32,9 @@
       }
 
       .hero-photo img {
-        border-radius: 2px;
-        transform: rotate(1deg) translate(-3px, 6px);
-        box-shadow: 0px 0px 0px 8px var(--blue3);
+        border-radius: 4px;
+        /* transform: rotate(1deg) translate(-3px, 6px); */
+        /* box-shadow: 0px 0px 0px 3px var(--slate4); */
       }
 
       @media only screen and (min-width: 600px) {
@@ -56,26 +56,32 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        font-size: 40px;
-        left: -50px;
+        font-size: 32px;
+        left: 460px;
+        rotate: -90deg;
         color: var(--slate6);
         transform-origin: top left;
-        transform: rotate(-90deg);
+        /* transform: rotate(-90deg); */
+      }
+
+      .date-2022::before {
+        content: '2022';
+        top: 80px;
       }
 
       .date-2018::before {
         content: '2018';
-        top: 92px;
+        top: 74px;
       }
 
       .date-2015::before {
         content: '2015';
-        top: 92px;
+        top: 74px;
       }
 
       .date-2014::before {
         content: '2014';
-        top: 92px;
+        top: 74px;
       }
 
       .article-grid {
@@ -161,9 +167,24 @@
       <section>
         <div class="hero">
           <div class="hero-text">
-            <h1 style="margin-bottom: var(--space5)">Hey, I'm Stephen</h1>
+            <h1 style="margin-bottom: var(--space3)">Hey, I'm Stephen</h1>
 
-            <p class="date-thing date-2018">
+            <p>
+              I'm a founder, engineer, designer, and game developer in Southern
+              California.
+            </p>
+
+            <h3>2022</h3>
+
+            <p>
+              WorkOS acquired my startup Modulz. At WorkOS I led product engineering from
+              early PMF into high-growth scale-up and launched
+              <a href="https://www.authkit.com/">AuthKit</a>, the world's best login.
+            </p>
+
+            <h3>2018</h3>
+
+            <p>
               I co-founded <a href="https://modulz.app">Modulz</a> to bridge the gap
               between designers and developers. Along the way we created
               <a href="https://www.radix-ui.com/">Radix</a>, accessibility-first React
@@ -171,12 +192,12 @@
               library with excellent DX.
             </p>
 
-            <hr size="1" width="20%" style="opacity: 0.3" />
+            <h3>2015</h3>
 
-            <p class="date-thing date-2015">
-              I was as an Engineering Manager at Marmot and Newell Brands, launching
-              ecommerce sites and eventually moving to NYC to lead the front-end
-              engineering efforts across the corporation.
+            <p>
+              I was as an Engineering Manager at Marmot, launching ecommerce sites and
+              eventually moving to NYC to lead the front-end engineering efforts across
+              Newell Rubbermaid.
             </p>
 
             <p>
@@ -185,13 +206,6 @@
                 href="https://www.amazon.com/Game-Development-Swift-Stephen-Haney-ebook/dp/B00YSILB6C"
                 >Game Development with Swift</a
               >
-            </p>
-
-            <hr size="1" width="20%" style="opacity: 0.3" />
-
-            <p class="date-thing date-2014">
-              I led engineering for a digital agency in California, producing high-profile
-              sites for companies like Levi's, Dockers, Belk, and Genentech.
             </p>
           </div>
           <div class="hero-photo">
@@ -208,8 +222,34 @@
       <section>
         <h2 style="margin-bottom: 0">Projects</h2>
         <div class="article-grid">
-          <a class="article-card" href="https://deardiary.ai" target="_blank">
-            <h3>DearDiary.AI</h3>
+          <a class="article-card" href="https://summoners.io" target="_blank">
+            <h3>Summoners.io</h3>
+            <p>Browser-based trading card game based on Hearthstone and Slay the Spire</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2023</span>
+              <span class="article-badge">Games</span>
+              <span class="article-badge">Babylon.js</span>
+              <span class="article-badge">WebGL</span>
+            </div>
+          </a>
+
+          <a class="article-card" href="https://zoodrop.io" target="_blank">
+            <h3>ZooDrop.io</h3>
+            <p>A fun take on the suika watermelon game, published by Poki</p>
+            <div class="article-badge-bar">
+              <span class="article-badge article-date">2023</span>
+              <span class="article-badge">Games</span>
+              <span class="article-badge">Three.js</span>
+              <span class="article-badge">WebGL</span>
+            </div>
+          </a>
+
+          <a
+            class="article-card"
+            href="https://one-story-one-song.vercel.app"
+            target="_blank"
+          >
+            <h3>DearDiary AI</h3>
             <p>
               Turn your journal into music.
               <br />A first-place winner of the Google Magenta hackathon.

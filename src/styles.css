@@ -138,7 +138,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: SOEHNE_BUCH, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  font-size: 18px;
+  font-size: 17px;
   line-height: 28px;
   color: var(--slate12);
   overscroll-behavior: none;
@@ -194,7 +194,7 @@ main {
   text-decoration: none;
   display: flex;
   align-items: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 @media (hover: hover) {
@@ -210,7 +210,7 @@ main {
 }
 
 .site-header a.logo {
-  font-size: 0.9em;
+  font-size: 1em;
   padding-top: var(--space2);
   padding-bottom: var(--space2);
   border-radius: 5px;
@@ -226,10 +226,9 @@ main {
 .logo-avatar img {
   display: block;
   margin-right: var(--space3);
-  object-fit: cover;
-  border-radius: 99999px;
-  width: 47px;
-  height: 47px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 
 .dark-mode-switcher {
@@ -301,8 +300,8 @@ h1 {
   font-size: 1.9em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji';
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
   line-height: 1.05;
   color: var(--blue12);
   border-radius: 6px 6px 6px 0;
@@ -337,7 +336,7 @@ h2 {
   h2 {
     font-size: 1.6em;
     margin-top: var(--space7);
-    margin-bottom: var(--space5);
+    margin-bottom: var(--space4);
   }
 }
 
@@ -345,7 +344,7 @@ h3 {
   font-size: 1.1em;
   color: var(--slate12);
   margin-top: var(--space5);
-  margin-bottom: var(--space3);
+  margin-bottom: var(--space2);
   letter-spacing: -0.1px;
   font-weight: 500;
 }
@@ -366,7 +365,7 @@ p:first-of-type {
 p a {
   color: var(--blue12);
   text-decoration: none;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
   box-shadow: 0px 1px 0px 0px var(--blue8);
   /* border-bottom: 1px solid var(--blue8); */
   /* border-top: 1px solid transparent; */
@@ -377,6 +376,7 @@ p a {
     color: var(--slate1);
     background: linear-gradient(70deg, var(--blue11), var(--blue10));
     box-shadow: none;
+    border-radius: 2px;
   }
 }
 
