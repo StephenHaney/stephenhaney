@@ -115,5 +115,4 @@ I hope this helps you quickstart playwright on fly.io with bun.
 
 ## Feedback or ideas?
 
-<a href="https://github.com/StephenHaney/stephenhaney/issues/9">Discuss this post on GitHub</a><br /><br />
-Say hi on <a href="https://x.com/sdothaney">X/Twitter</a> or <a href="https://bsky.app/profile/stephenhaney.com">Bluesky</a>
+<a href="https://github.com/StephenHaney/stephenhaney/issues/9">Discuss this post on GitHub</a>

@@ -435,5 +435,9 @@ p code {
 /** --- Footer --- */
 
 footer {
-  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--space6);
 }
