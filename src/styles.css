@@ -138,8 +138,8 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: SOEHNE_BUCH, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  font-size: 17px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 25px;
   color: var(--slate12);
   overscroll-behavior: none;
   overflow-y: scroll;
@@ -312,7 +312,7 @@ h1 {
 }
 @media only screen and (min-width: 600px) {
   h1 {
-    font-size: 2.1em;
+    font-size: 2.25em;
   }
 }
 
@@ -345,7 +345,7 @@ h3 {
   font-size: 1.1em;
   color: var(--slate12);
   margin-top: var(--space5);
-  margin-bottom: var(--space2);
+  margin-bottom: var(--space1);
   letter-spacing: -0.1px;
   font-weight: 500;
 }
